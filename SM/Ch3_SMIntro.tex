@@ -1,0 +1,38 @@
+\chapter{Set-Membership Identification: Introduction}
+
+The objective of this chapter is to introduce an approach for the parameter estimation which requires to do less strong assumption on the noise affecting the experimentally collected data. After a brief introduction with the crucial ingredients, we will go on with some instructive examples which will bring us to the complete formulation of the \textbf{Set-Membership System Identification procedure}.
+
+\section{Ingredients for Set-Membership System Identification}
+As usual in order to perform correctly the procedure of System Identification we need some crucial ingredients:
+\begin{itemize}
+    \itemsep-0.2em
+    \item[\ding{182}] \textbf{\textsf{A-priori assumption on the system:}}
+    \begin{enumerate}
+        \item[\ding{51}] We use the general \textbf{regression form} 
+        \begin{equation} 
+            y(k)=f(y(k-1), y(k-2),  ..., y(k-n), u(k-1), ..., u(k-m), \theta)
+        \end{equation}
+        \item[\ding{51}] The \textbf{class of function} $\mathcal{F}$ and the order of the system $n$;     
+    \end{enumerate}
+   
+    \item[\ding{184}] \textbf{\textsf{A-priori information of the noise}} and in particular:
+    \begin{enumerate}  
+        \itemsep-0.2em
+        \item[\ding{51}] \textbf{Noise structure}: is referred to the way the uncertainty enters  into the problem.
+        \item[\ding{51}] \textbf{Characteristic of the signal}, it is remarkable that here we assume something different and weaker. We will assume that the noise sequence/sequences (depending on the noise structure) belongs to a certain bounded set $\mathcal{B}$.
+    \end{enumerate}
+\end{itemize}
+
+\section{Set-Membership Identification of LTI system with EE noise structure}
+In this paragraph we will show what is obtained in term of parameter estimation, when we have that the a-priori information on the noise are the following:
+\begin{itemize}
+    \item[\ding{51}] The uncertainty enter in the problem as an additive term which we call $e(k)$ (the same of the first assumption of the theorem), that is:
+    \begin{align*}
+        y(k) = &-\theta_1{y(k-1)}-\theta_2{y(k-2)}-...-\theta_n{y(k-n)}\\
+        &+\theta_{n+1}u(k)+\theta_{n+2}u(k-1)+...+\theta_{n+m+1}u(k-m) + \underbrace{e(k)}_{\textsf{EQUATION ERROR}}
+    \end{align*}
+    \item[\ding{51}] We suppose on the sequence characterizing the error is \textbf{bounded} (this is the crucial difference with respect to what requires the \textit{consistency theorem}), that is:
+    \begin{equation}\label{eq:boundedness}
+        e(k)\in\mathcal{B}_e \iff \vert e(k) \vert \le \Delta_e, \ k=1, ..., H
+    \end{equation}
+\end{itemize}

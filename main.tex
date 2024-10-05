@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt]{report}
 \include{packages.tex}
+\usepackage[a4paper, top=2.8cm , bottom=2cm , right=2cm , left=2cm ]{geometry}
 
 \title{
     {\color{black}
@@ -16,12 +17,18 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
+\pagestyle{headings}
+
 \begin{document}
 \maketitle
 \tableofcontents
 
-\part{Set-Membership Identification}
+
+\part{Set-Membership System Identification}
 \input{SM/Ch1_Intro.tex}
+\input{SM/Ch2_LS.tex}
+\input{SM/Ch3_SMIntro.tex}
+
 
 \part{Direct Data-Driven Control}
 

@@ -62,7 +62,7 @@ The procedure we have for obtaining the mathematical model  is the following:
     \end{equation}
     \item \textsf{\textbf{STEP 2}} Collect Input-Output data representing the behaviour of the system under study by performing an (open-loop) experiment. In particular, we collect the output $\tilde{y}$ from the plant using as input the sequence $\tilde{u}$.
     \item \textsf{\textbf{STEP 3}} To formulate a suitable \textbf{mathematical problem} to estimate/compute the values of parameter $\theta=[\theta_1...\theta_n]^T$ in such a way that our mathematical model is going to describe the behaviour of the real system, \textbf{as well as possible (in some sense)}. A common approach is to compute the parameter by solving the following problem:
-    \begin{equation}
+    \begin{equation} \label{eq:problem}
         \hat{\theta} = \arg\min_{\theta}{J(\theta)}
     \end{equation}
     where $\hat{\theta}$ is the vector of parameters to be estimated, while $J(\theta)$ is the functional to be minimized. Usually we take it as $J(\theta)=\Vert \tilde{y}-f(\tilde{u}, \theta)\Vert$.
@@ -72,3 +72,40 @@ The procedure we have for obtaining the mathematical model  is the following:
         \item \textbf{Black-box models} $\Longrightarrow$ $f(\tilde{u}, \theta)$ will be selected by the user in order to depend linearly from $\theta$ (if possible) or anyway in the \textit{simplest possible way}.
     \end{itemize}
 \end{enumerate}
+
+\section{Gray-Box vs Black-Box}
+We have said that in the case of \textbf{Gray-box models} in general $f(u,\theta)$ may be a \textit{nonlinear} and \textit{non convex} function of $\theta$. This imply that the problem (\ref{eq:problem}) is going to be a \textbf{non convex optimization problem}, and in this case it is not trivial to solve it, the best I can say is to find \textbf{local minima}. In some situations we could be particularly lucky, and choosing a particular initial point there is the possibility of finding  the global minimum. However there is no way to certify it! Clearly a local minima, could correspond to a bad estimate of the parameter $\theta$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{img/cvx_nocvx.png}
+    %\caption{Convex vs Non-Convex }
+\end{figure}
+
+For \textbf{Black-box} models, by selecting the parametrization of $f$ such that it could be a \textbf{convex function of $\theta$}, the problem \ref{eq:problem} becomes a \textbf{convex optimization problem}. In 1D the functional to be minimized is something similar to the one showed in the figure above. Convex functions have a  unique \textbf{global minima},there is no chance to be trapped in a local minima as in the non convex case. Clearly, waht is missed in this kind of approach is the \textit{physical meaning} of the estimated parameters. Let us give an example to better clarify this aspect: 
+
+\subsubsection{Example (Second-order LTI system)}
+Suppose that from first principles of physics we derive the following transfer function:
+\begin{equation*}\label{eq:nonlinear}
+    H(s)=\frac{
+        \frac{p_1^2}{p_2}s+\frac{p_3}{\sqrt{p_4}}
+    }{
+        s^2+\frac{p_1p_4}{p_3^2}s+1
+    }
+\end{equation*}
+where $p_1, ..., p_4$ are physical (meaningful) parameters. What does we miss by modeling the transfer function by using the following model derived for example after a \textit{black-box procedure}?
+\begin{equation*}
+    H(s)=\frac{\theta_1{s}+\theta_2}{s^2+\theta_3{s}+\theta_4}
+\end{equation*}
+The physical meaning is clearly missed, but in many situation the objective is not to be grasped to the physical meaning of the parameters taken singularly, but (a) to derive an I/O model for the plant; (b) to use such a model for designing a (model-based) controller.\\
+
+\noindent
+In order to conclude this discussion we can say that:
+\begin{itemize}
+    \item The \textbf{black-box approach} is the \textit{best choice} when we want either to simulate the I/O behaviour of the system or to design a \textbf{feedback control system}; an important remark to do is that the \textbf{structure} of a such a model must be selected by exploiting the most important a-priori information on the system (eg. \textbf{linearity}, \textbf{time invariance}...)
+    \item The \textbf{gray-box approach} is the \textit{best choice} when we want to estimate the values for some \textbf{physical parameters}.
+\end{itemize}
+\noindent 
+It is true that -- in all the approaches can be used for \textbf{System Identification} -- the experimental data plays a crucial role, but also the \textit{a-priori information} are of paramount importance. Besides, given the experimentally collected data there is an infinite number of functions which can interpolate those data. But if we apply an arbitrary input and then we compare the estimated output with the true one, we can confirm that the derived function just overfits the provided data. Conclusion: together with \textit{a-posteriori information} (collected data), we need also the \textit{a-priori information}, otherwise a well SysId procedure cannot be performed.
+
+
