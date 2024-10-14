@@ -26,6 +26,7 @@ As usual in order to perform correctly the procedure of System Identification we
 \section{Set-Membership Identification of LTI system with EE noise structure}
 In this paragraph we will show what is obtained in term of parameter estimation, when we have that the a-priori information on the noise are the following:
 \begin{itemize}
+    \itemsep-0.3em
     \item[\ding{51}] The uncertainty enter in the problem as an additive term which we call $e(k)$ (the same of the first assumption of the theorem), that is:
     \begin{align*}
         y(k) = &-\theta_1{y(k-1)}-\theta_2{y(k-2)}-...-\theta_n{y(k-n)}\\
@@ -36,17 +37,17 @@ In this paragraph we will show what is obtained in term of parameter estimation,
         e(k)\in\mathcal{B}_e \iff \vert e(k) \vert \le \Delta_e, \ k=1, ..., H
     \end{equation}
 \end{itemize}
-\section{Feasible Parameter Set $\mathcal{D}_\theta$}
+\subsection{Feasible Parameter Set $\mathcal{D}_\theta$}
 
 \begin{quotation}
     \noindent
-    \textsf{In this paragraph by using some examples, we will define the \textit{feasible parameter set} and its fundamental properties, in particular, it is useful to derive a \textbf{mathematical formulation of such a set} in otder to explore its \textit{usefulness} and \textit{boundedness}}
+    \textsf{In this paragraph by using some examples, we will define the \textit{feasible parameter set} and its fundamental properties, in particular, it is useful to derive a \textbf{mathematical formulation of such a set} in order to explore its \textit{usefulness} and \textit{boundedness}}
 \end{quotation}
 
 \noindent
 The set of solutions for the identification problem is implicitly described on what is called the \textbf{Feasible Parameter Set (FPS)}, we will indicate it with $\mathcal{D}_\theta$.
 
-\begin{definition}[\textsf{\textbf{FEASIBLE PARAMETER SET (FPS)}}] \textit{The \textbf{Feasible Parameter Set} $\mathcal{D}_\theta$ is the set of all the values of the parameter $\theta=[\theta_1 ... \theta_n]^T$ which are consistent (coherent) with all the available a-priori information (system and noise) and all the collected data (a-posteriori information).}
+\begin{definition}[\textsf{\textbf{FEASIBLE PARAMETER SET}}] \textit{The \textbf{Feasible Parameter Set} $\mathcal{D}_\theta$ is the set of all the values of the parameter $\theta=[\theta_1 ... \theta_n]^T$ which are consistent (coherent) with all the available a-priori information (system and noise) and all the collected data (a-posteriori information).}
 \end{definition}
 
 
@@ -69,8 +70,8 @@ For this aim, given the sequence $u(k)$, we collect an output $\tilde{y}(k), \ k
     \textsf{probably the parameter $\theta_i$ are provided with an \textbf{uncertainty interval} since also the experimental data are provided with uncertainty.}
 \end{quotation}
 
-\subsection{FPS mathematical formulation for a 2$^{nd}$ order LTI system}
-We know that the system is a \textbf{second order}, \textbf{LTI one} (\textit{a-priori assumption on the system}), the uncertainty/noise enters the identification problem as additive term $e(k)$ (equation error) and it is \textbf{bounded} (that is $\vert e(k)\vert \le \Delta_e, \ k=0,1, ..., H$) (\textit{a-priori assumption on the noise}), after having collected the data $\tilde{y}(k)$, after stimulating the system to be identified with a sequence $\tilde{u}(k)$ (\textit{a-posteriori information})\footnote{
+\subsection{Mathematical formulation of the FPS}
+We know that the system is a \textbf{second order}, \textbf{LTI one} (\textit{a-priori assumption on the system}), the uncertainty/noise enters the identification problem as additive term $e(k)$ (equation error) and it is \textbf{bounded} (that is $\vert e(k)\vert \le \Delta_e, \ k=0,1, ..., H$) (\textit{a-priori assumption on the noise}), after having collected the data $\tilde{y}(k)$, after having stimulated the system to be identified with a sequence $\tilde{u}(k)$ (\textit{a-posteriori information})\footnote{
     An EIV(Errors-in-variables) set-up is assumed, then, in order to be more precise the input is given by a subsystem, this is the reason why we have to measure it.
 }, we can define the \textsf{Feasible Parameter Set} as follows:
 
@@ -86,7 +87,7 @@ We know that the system is a \textbf{second order}, \textbf{LTI one} (\textit{a-
         \}
     \end{aligned}
 \end{equation}
-The set (\ref{eq:FPS_2nd}) is made up of both inequality and equality constraints, moreover it appears clear that it is a \textit{subset of $\mathbb{R}^p$} with $p$ the number of parameters. There is a problem: the set $\mathcal{D}_\theta$ is defined using some an inequality constraint on the noise sample $e(k)$ which are not part of the parameter space. In the following a way to eliminate such a dependence is shown, without adding any approximation or conservativeness.
+The set (\ref{eq:FPS_2nd}) is made up of both inequality and equality constraints, moreover it appears clear that it is a \textit{subset of $\mathbb{R}^p$} with $p$ the number of parameters. There is a problem: the set $\mathcal{D}_\theta$ is defined using some inequality constraints on the noise samples $e(k)$ which are not part of the parameter space. In the following a way to eliminate such a dependence is shown, without adding any approximation or conservativeness.
 
 \begin{equation*} 
     \begin{aligned}
@@ -107,23 +108,25 @@ The set (\ref{eq:FPS_2nd}) is made up of both inequality and equality constraint
         \}
     \end{aligned}
 \end{equation*}
-Now we have obtained an implicit description of the \textbf{set of all the feasible solution of our identicication problem} in term of a \textit{set of inequality contraints only involving $\theta$}.\\
-A graphical representation of such a set in a 2-dimensional parameter space is shown in the figure below.
+In this way, we have obtained an implicit description of the \textbf{set of all the feasible solution of our identification problem} in term of a \textit{set of inequality contraints only involving $\theta$}.\\
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.18]{img/FPS_1.jpeg}
-    \vspace{-0.3em}
-    \caption{Example of a FPS in $\mathbb{R}^2$}
-\end{figure}
 
-\subsection{Main features of $\mathcal{D}_\theta$}
-Here the objective is to analyze two main features of the Feasible Parameter Set by formulating the following two questions:  
-\begin{itemize}
-    \itemsep-0.2em
-    \item[(Q1)] \textsf{\color{red}Boundedness} Is this set a bounded one? Under which conditions?
-    \item[(Q2)] \textsf{\color{red}Usefulness} What is the relation between $\mathcal{D}_\theta$ and $\theta_{\text{true}}$?
-\end{itemize}
+\begin{multicols}{2}
+    \noindent
+    A graphical representation of such a set in a 2-dimensional parameter space is shown in the figure on the side. Here the objective is to analyze two main features of the Feasible Parameter Set by formulating the following two questions:  
+    \normalsize{
+    \begin{itemize}
+        \itemsep-0.2em
+        \item[(Q1)] \textsf{\textbf{\color{red}Boundedness}} Is this set a bounded one? Under which conditions?
+        \item[(Q2)] \textsf{\textbf{\color{red}Usefulness}} What is the relation between $\mathcal{D}_\theta$ and $\theta_{\text{true}}$?
+    \end{itemize}}
+    \newcolumn
+    \begin{center}
+        \includegraphics[scale=0.18]{img/FPS_1.jpeg}
+    \end{center}
+\end{multicols}
+\subsubsection{Main features of $\mathcal{D}_\theta$}
+
 
 \noindent
 \textsf{\underline{Question Q1}} The boundedness of $\mathcal{D}_\theta$ depends on the way we collect the data (in general) ($\Rightarrow$ this concept has to be better specified in the next slides). \textit{For the moment let us assume that such a set is bounded}.\\
@@ -132,17 +135,18 @@ Here the objective is to analyze two main features of the Feasible Parameter Set
 \textsf{\underline{Question Q2}} Assuming that the a-priori assumptions on the system and on the noise are correct, then $\theta_{\text{true}}$ is guaranteed to belong to $\mathcal{D}_\theta$ (this is very important for further theory development).\\
 
 \noindent
-Once that we have obtained an implicti description of $\mathcal{D}_\theta$, \textit{how can we extract a useful model from it either for simulating the system or designing a feedback controller for such a system?} Before saying it, we have to say we can distinguish \textit{two different classes} of SM estimation algotrithms: 
+Once that we have obtained an implicit description of $\mathcal{D}_\theta$, \textit{how can we extract a useful model from it,either for simulating the system or designing a feedback controller for such a system?} Before saying it, we have to  distinguish \textit{two different classes} of SM estimation algotrithms: 
 \begin{itemize}
     \itemsep-0.2em
-    \item[(E1)] \textsf{\textbf{\color{red} Set-valued estimators}}, defined as estimation algorithms which provides a (possibly) convervative estimate of $\mathcal{D}_\theta$ in a \textbf{simplified geometrical form} that can be easily used to simulate or control the system; 
+    \item[(E1)] \textsf{\textbf{\color{red} Set-valued estimators}}, defined as estimation algorithms which provides a (possibly) conservative estimate of $\mathcal{D}_\theta$ in a \textbf{simplified geometrical form} that can be easily used to simulate or control the system; 
     \item[(E2)] \textsf{\textbf{\color{red} Pointwise Estimators}}, defined as estimation algorithms that provides a single value of $\theta$ which is an optimal estimate of $\theta_{\text{true}}$ in some sense.
 \end{itemize}
-Here, among all the possible estimator in the class (E1) we consider the algorithm which is providing the \textbf{minimum volume box outerbounding $\mathcal{D}_\theta$}. Such an estimator is implicitly providing what we will call \textbf{Parameter uncertainty Intervals (PUIs)}. 
+Here, among all the possible estimator in the class (E1), we consider the algorithm which is providing the \textbf{minimum volume box outerbounding $\mathcal{D}_\theta$}. Such an estimator is implicitly providing what we will call \textbf{Parameter uncertainty Intervals (PUIs)}. 
 
 \begin{multicols}{2}
-    \includegraphics[scale=0.18]{img/PUI_1.jpeg}
+    \includegraphics[scale=0.2]{img/PUI_1.jpeg}
     The PUI are defined as follows:
+    \newcolumn
     \begin{equation}
         PUI_{\theta_j} = [\underline{\theta}_j,
         \overline{\theta}_j]
