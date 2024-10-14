@@ -1,0 +1,79 @@
+\chapter{Lab 1: Least-Squares parameter estimation (Solution)}
+
+In this problem we assume that the plant is a continuous time LTI dynamical system assumed
+to be exactly described by the following transfer function:
+
+\begin{equation*}
+    G_p(s) = \frac{100}{s^2+1.2s+1}
+\end{equation*}
+
+\begin{lstlisting}[style=Matlab-editor]  
+    G=100/(s^2+1.2*s+1);
+\end{lstlisting}
+
+\noindent
+Assuming that the input-output data have been collected with a sample time of Ts = 1s,
+compute a discrete-time model for the plant as follows (see help of the Matlab command
+\texttt{c2d}): $G_d(z)=\textsf{c2d}(G_p,1,\text{'zoh'})$:
+
+\begin{lstlisting}[style=Matlab-editor]  
+    Gz=c2d(G,1,'zoh'); 
+\end{lstlisting}
+
+\noindent
+Use the obtained discrete-time model to generate input-output data by applying to the system
+a randomsequence of $N$ samples and amplitude 1 as input (see commands rand and command
+\texttt{lsim}). Collect the input sequence in the array $u$ and the output sequence in the array $w$.
+
+\begin{lstlisting}[style=Matlab-editor]    
+    n=2; 
+    k=n+1;              %Point where I have to start
+    H=1e5+n;            %I need at least (3n+1) samples
+            
+    u=rand(H, 1);
+    %noisy-data (Equation Error)
+    w_nf=lsim(Gz,u);
+\end{lstlisting}
+
+\section{Noise-Free experiment}
+\noindent
+Using the array u and w, build matrix A and array b required for the computation of the least
+squares estimate of the discrete-time model parameters, according to the theory and examples
+about least square estimation presented in the classroom.
+
+\begin{lstlisting}[style=Matlab-editor] 
+    [numGz, denGz]=tfdata(Gz,'v');
+    th_true = [denGz(2:end) numGz]'
+
+    A = [-w_nf(2:H-1) -w_nf(1:(H-2)) u(3:H) u(2:(H-1)) u(1:(H-2))];
+    th_est_noise_free = A\w_nf(k:H)
+\end{lstlisting}
+
+\section{Equation-Error setting}
+Repeat the exercise (for different values of $N$) by adding a random \textit{equation error} $e$ while
+simulating the data.
+
+\begin{lstlisting}[style=Matlab-editor] 
+    D=tf([0 0 1],denGz,1);
+    e = 5*randn(H,1);
+    w_nEE = lsim(Gz,u)+lsim(D,e);
+    A = [-w_nEE(2:H-1) -w_nEE(1:(H-2)) u(3:H) u(2:(H-1)) u(1:(H-2))];
+    th_est_noiseEE = A\w_nEE(k:H) 
+\end{lstlisting}
+
+\section{Output-Error setting}
+Repeat the exercise (for different values of $N$) by adding a random \textit{output measurement error}
+$\eta$.
+
+\begin{lstlisting}[style=Matlab-editor] 
+    %simulation in case of Output-Error(OE) setting
+    std=5;
+    eta=std*randn(H,1);
+    w_nOE=lsim(Gz,u)+eta;
+
+    A = [-w_nOE(2:H-1) -w_nOE(1:(H-2)) u(3:H) u(2:(H-1)) u(1:(H-2))];
+    th_est_noiseOE = A\w_nOE(k:H)
+\end{lstlisting}
+
+
+
