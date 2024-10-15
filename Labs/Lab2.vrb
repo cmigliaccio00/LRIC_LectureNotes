@@ -1,0 +1,22 @@
+\frametitle{Problem 2: Feasible Parameter Set $\mathcal{D}_\theta$ definition}
+    \framesubtitle{PUI computation by means of Linear Programs (LP) solution}
+    The problems in (\ref{eq:opt_prob}) can be rewritten as:
+    \begin{align}
+            &\underline{\theta}_j = \min_{\theta}{c^T{\theta}} \ &\text{subject to:} \ A\theta\le{b} \\
+            &\overline{\theta}_j = \max_{\theta}{c^T{\theta}} \ &\text{subject to:} \ A\theta\le{b}
+    \end{align}
+    where $c_i=1 \iff i=j$. Linear Programming solvers can be used in order to find a \alert{global optimal solution.} In MATLAB the \texttt{linprog()} command can be used.
+    \begin{exampleblock}{MATLAB$^\text{\tiny\textregistered}$ Code}\justifying
+        \small
+         In the following there is an example of MATLAB code for the computation of $PUI_{\theta_1}$
+        {\tiny{
+            \begin{verbatim}
+    A=[y(2:N-1) y(1:N-2) -u(3:N) -u(2:N-1) -u(1:N-2);
+    -y(2:N-1) -y(1:N-2) u(3:N) u(2:N-1) u(1:N-2)];
+    b=[dE*ones(N-3+1)-y(3:N); dE*ones(N-3+1)+y(3:N)];
+    c=zeros(5,1); c(1)=1;
+    [~,th1_inf] = linprog(c,A,b);
+    [~,th1_sup] = linprog(-c,A,b); th1_sup=-th1_sup;
+                        \end{verbatim}
+        }}
+    \end{exampleblock}
