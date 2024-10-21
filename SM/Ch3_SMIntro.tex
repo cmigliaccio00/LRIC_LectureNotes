@@ -1,4 +1,4 @@
-\chapter{Set-Membership Identification: an introduction}
+\chapter[Set-Membership Identification: intro, Equation-Error]{Set-Membership Identification: an introduction, Equation-Error noise structure}
 
 The objective of this chapter is to introduce an approach for the parameter estimation which requires to do less strong assumption on the noise affecting the experimentally collected data. After a brief introduction with the crucial ingredients, we will go on with some instructive examples which will bring us to the complete formulation of the \textbf{Set-Membership System Identification procedure}.
 
@@ -275,7 +275,7 @@ Combining the two halfplanes with the ones obtained before, we obtain that \text
 \noindent
 Let us remind that the FPS for sure contains $\theta_{true}$
 if and only if all the a-priori assumptions are correct, otherwise the FPS will be \textbf{empty}!}\\
-It is remarkable, that this was a case in which by inspection you can read the $PUI$, however we need to generalize. In particular the problem of finding a $PUI$ in the hypotesis of LTI systems with equation error noise structure can be recasted in the solution of \textbf{two standard Linear Programming (LP) problems}.\footnote{
+It is remarkable, that this was a case in which by inspection you can read the $PUI$, however we need to generalize. In particular the problem of finding a $PUI$ in the hypotesis of LTI systems with equation error noise structure can be recasted in the solution of \textbf{two standard Linear Programming (LP) problems}: minimization of a linear (convex) objective under constraints representing a polytope.\footnote{
     \noindent
     A \textbf{Linear Programming (LP) problem} is a convex optimization problem of the form
     \begin{equation*}

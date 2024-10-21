@@ -7,6 +7,7 @@ Then, the objective here is to find a way for dealing with the 'original' proble
 \section{ Feasible Parameter Set in the EIV set-up}
 In order to define also for this type of set-up the feasible parameter set, we have to follow the same road as we have done before. In particular we have to put together:
 \begin{description}
+    \itemsep-0.2em
     \item[A-priori information on the system] We know that the system belongs to a certain class $\mathcal{F}$, moreover we know the order $n$ of the system itself.
     \item[A-priori information on the noise] In particular the way the uncertainty enters the identification problem (we assume here the most general case when both input and output are corrupted by noise) and the boundedness of the noise samples, in particular
     \begin{equation}
@@ -38,7 +39,8 @@ In this context the definition of PUI is always the same, and the extrema of suc
     \overline{\theta}_j = \max_{\theta\in\mathcal{D}_\theta} \theta_j
     \Longrightarrow PUI_{\theta_j}=[\underline{\theta}_j,\overline{\theta}_j]
 \end{equation*}
-At this point the question is: \textbf{what type of $\mathcal{D}_\theta$ I obtain?} \\
+At this point the question is: \textbf{what type of $\mathcal{D}_\theta$ I obtain?} 
+\section{Extended Feasible Parameter Set $\mathcal{D}_{\theta,\eta,\xi}$}
 How we are able to see in the (\ref{eq:FPS}) the set definition depends also on the noise samples. The difference here is that I cannot eliminate them without adding any approximation. Substancially, I am introducing a non trivial number of new unknown in the description of the set: for $N$ collected samples, $2N$ new variables are added, which cannot be eliminated. For this reason we have to \textit{enlarge} the set $\mathcal{D}_\theta$ involving also the new variables. In this way we introduce the so-called \textbf{Extended Feasible Parameter Set (EFPS)} which we indicate with $\mathcal{D}_{\theta,\eta,\xi}$. \\
 In order to better understand this aspect, let us consider a toy-example in which we have a single parameter $\eta(1)$ which is added to the pair $\theta_1, \theta_2$. The EFPS in this case -- how the figure below shows -- is a subset of $\mathbb{R}^3$.
 \vspace{-0.2cm}
