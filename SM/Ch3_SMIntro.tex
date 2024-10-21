@@ -1,4 +1,4 @@
-\chapter{Set-Membership Identification: Introduction}
+\chapter{Set-Membership Identification: an introduction}
 
 The objective of this chapter is to introduce an approach for the parameter estimation which requires to do less strong assumption on the noise affecting the experimentally collected data. After a brief introduction with the crucial ingredients, we will go on with some instructive examples which will bring us to the complete formulation of the \textbf{Set-Membership System Identification procedure}.
 
@@ -302,15 +302,19 @@ We know that for a certain parameter $\theta_j$, $j=1,...,p$,  the related inter
 \end{align}
 
 \noindent
-Note that both the problems (\ref{eq:th_under}) and (\ref{eq:th_over}) can be rewritten in the form of an LP problem by suitably choosing $c$ and by arranging the set of constraints in suitable matrices $A$ and $b$. For example when we want to compute the PUI for the $\theta_1$ parameter for a first order system, the direction $c$ will be $c=[1 \quad 0]^T$, then for $\theta_2$, $c=[0 \quad 1]^T$.\\
-In conclusion, we have understand that the problem of finding the PUIs for $p$ parameters in the described setting, is leading to the solution of $2p$ LP problems, whose solutions are \textbf{global ones}, the problem in this case can be exactly solved without adding any conservativeness!\\
+Note that both the problems (\ref{eq:th_under}) and (\ref{eq:th_over}) can be rewritten in the form of an LP problem by suitably choosing $c$ and by arranging the set of constraints in suitable matrices $A$ and $b$. For example when we want to compute the PUI for the $\theta_1$ parameter for a first order system, the direction $c$ will be $c=[1 \quad 0]^T$, then for $\theta_2$, $c=[0 \quad 1]^T$. In \texttt{MATLAB} once you have formulated the problem in the LP form, you can use the command \texttt{[th, opt\_val]=linprog(c,A,b)}, in which \texttt{th} is the optimal solution, while \texttt{opt\_val} is the optimization variable.\\
+In conclusion, we have understood that the problem of finding the PUIs for $p$ parameters in the described setting, is leading to the solution of $2p$ LP problems, whose solutions are \textbf{global ones}, the problem in this case can be exactly solved without adding any conservativeness!\\
 
 \noindent
-The most critical issue of using such an approach is that, despite any type of experimental set-up can be recasted into a model having an equation error noise structure, I rarely am able to retrieve a bound $\Delta_e$. 
+The most critical issue of using such an approach is that, despite any type of experimental set-up can be recasted into a model having an equation error noise structure, I rarely am able to retrieve a bound $\Delta_e$. \\
+{\color{blue}
+More in particular, this approach can be applied all the times you have that the model is linearly parametrized, that is \textit{the parameters appears linearly in the equation}, since from the regression form you have samples from the input and output which can be for sure non linear ones! 
+}
+
 
 \section{Final remarks}
 In this section we have introduced the \textit{Set-Membership approach} for the model parameters estimation. Next, we have analysed the main ingredients, and introducing the concept of \textbf{Feasible parameter set} we have understood that such an approach leads with itself a robust way for describing the parameters, embedding the uncertainty which comes from the data collection. This has been carried out by properly defining the \textit{Parameter Uncertainty Interval}. \\
 
-In the last part we have applied all of the features of the described approach starting from the simplest case in which the model to be identified was LTI and the noise sample unknonwn but bounded. By suitably arranging the mathematical constraints derived by putting together all the a-priori and a-posteriori information we have recasted the problem of finding the PUIs in the solution of a couple of LP problems which leads to global minima. Finally, analyzing the problem of SM Identification in this way was mainly of theoretical and conceptual interest since we have seen that retrieving a bound $\Delta_e$ on the error is practically impossible. Other approaches embedding a complete description of the noise samples are needed.
+In the last part we have applied all of the features of the described approach starting from the simplest case in which the model to be identified was LTI and the noise samples unknonwn but bounded. By suitably arranging the mathematical constraints derived by putting together all the a-priori and a-posteriori information, we have recasted the problem of finding the PUIs in the solution of a couple of LP problems which leads to a global minima. Finally, analyzing the problem of SM Identification in this way was mainly of theoretical and conceptual interest since we have seen that retrieving a bound $\Delta_e$ on the error is practically impossible. Other approaches embedding a complete description of the noise samples are needed.
 
 

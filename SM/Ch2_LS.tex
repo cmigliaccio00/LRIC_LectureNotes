@@ -1,4 +1,4 @@
-\chapter{System Identification: Least Squares Approach}
+\chapter{System Identification: $\ell_p$-norm estimators}
 
 We have introduced in the first chapter the concept of \textit{System Identification} and we caught the importance of experimentally collected data, clearly in this more or less complex procedure one has to take into account that since that -- the data are collected by performing experiments on the real plant, they can be affected by \textbf{uncertainty/measurement noise}.\\
 Moreover, even if the system to be identified  is a \textbf{continuous-time one} the most natural model for SysId is the discrete-time one, since samples of continuos time signals are collected.
@@ -141,10 +141,14 @@ where $A^*$ is the Moore-Penrose pseudoinverse (generalization of the inverse fo
 }. It can be demonstrated\footnote{
     The problem (\ref{eq:LS}) appears to be a convex quadratic unconstrained minimization problem. If the functional is explicitly written as a quadratic function, then after computing the gradient, its root raises the normal equations.
 } that the (\ref{eq:normal__equations}) is the solution of the problem:
-\begin{equation} \label{eq:LS} \tag{\textsf{LS}}
-    \theta_{LS}=\arg\min_{\theta} \Vert \tilde{y}-A\theta \Vert_2^2
-\end{equation}
-that is the well-known \textbf{Least-Squares problem}. This is a statistical approach to \textit{parameter estimation} which has nice properties:
+{\large{
+    \color{red}
+    \begin{equation} \label{eq:LS} \tag{\textsf{LS}}
+        \theta_{LS}=\arg\min_{\theta} \Vert \tilde{y}-A\theta \Vert_2^2
+    \end{equation}
+}}
+
+that is the well-known \textbf{Least-Squares problem}, the deriving estimator is called the $\ell_2$ estimator. This is a statistical approach to \textit{parameter estimation} which has nice properties:
 \begin{itemize}
     \item The \textit{computational burden} is very low! The only needed operation is the inversion of $A^T{A}$;
     \item There is a recursive way to solve it that reduces the work load in presence of big matrices (online computation).\footnote{
@@ -153,7 +157,7 @@ that is the well-known \textbf{Least-Squares problem}. This is a statistical app
     \item The most important and 'powerful' property is the \textbf{consistency property}, which holds when two assumptions are satisfied. The next paragraph deals with the explanation of such assumptions.
 \end{itemize}
 
-\subsection{Least Squares: consistency property}
+\subsection{$\ell_2$-norm estimation (Least Squares): consistency property}
 \begin{theorem}[\textsf{Consistency Theorem}] If the following two assumptions are satisfied:
 \begin{enumerate}
     \item The noise can be considered as an additive term entering the problem that is
@@ -240,8 +244,98 @@ Here the output is a function of parameters $\theta_i$ and of the input $u(k)$ a
     \theta_2{g_2({u(k)})} + ... +
     \theta_n{g_n({u(k)})} + e(k)
 \end{equation}
-The functions $g_i(u(k))$ can be trigonometric functions, polynomial or anyway any other basic function.
+The functions $g_i(u(k))$ can be trigonometric functions, polynomial or anyway any other basic function.\\
+
+\hrule
+\begin{center}
+    \textsf{
+        Beyond the $\ell_2$ (Least-Squares) estimator, there are other estimators that under the assumption for the noise of satisfying some statistichal properties, are consistent ones. The \textbf{consistency} deals with the property for the expected value of an estimator to converge to the real value $\theta$ of the parameter vector with the increasing number of data. In the following the $\ell_\infty$-norm and $\ell_1$-norm estimators are presented with their features. Moreover a transformation of such problems into Linear Programs is sketched.
+    }
+\end{center}
+\section{$\ell_\infty$-norm parameter estimation}
+The $\ell_\infty$-norm parameter estimation is issued by properly solving the following optimization problem: 
+{\large{
+    \color{red}
+    \begin{equation}\label{eq:linfty}
+        \theta_{\ell_\infty} = \arg\min_{\theta\in\mathbb{R}^p} {\Vert y-A\theta\Vert_\infty} 
+    \end{equation}
+}}
+
+It can be demonstrated that under the assumption that the uncertainty enters into the identification problem as an \textit{equation error} and $e(k)\sim{U([-a,a])}$\footnote{
+    Uniform probability distribution
+}, the estimator in (\ref{eq:linfty}) is consistent. This is equivalent to say:
+\begin{equation*}
+    \lim_{N\to\infty} {\mathbb{E}[\theta_{\ell_\infty}]}=\theta
+\end{equation*}
+It is remarkable that using the \textbf{epigraphic formulation} in (\ref{eq:linfty}) the following problem can be recasted into a \textbf{Linear Program} (LP). In particular, keeping in mind that
+\begin{equation*}
+    \Vert y-A\theta \Vert_\infty \doteq \max_i {\vert y_i-a_i^T\theta \vert}
+\end{equation*}
+the problem can be rewritten, introducing a \textbf{scalar slack variable} $t$ and pushing the objective in the constraints\footnote{
+    Note that: $\max_i {\vert y_i-a_i^T\theta \vert} \le t \iff\vert y_i-a_i^T\theta \vert \le t \quad \forall i $
+}:
+\begin{equation}
+    \begin{aligned}
+        &\min_{\theta\in\mathbb{R}^p, t\in\mathbb{R}} t\\
+        &\text{s.t.} \ 
+         \vert y_i-a_i^T\theta \vert \le t \quad \forall i 
+    \end{aligned}
+\end{equation} 
+An \textit{augmented optimization variable} $x=[\theta, t]\in\mathbb{R}^{p+1}$ can be used in order to transform the original problem into: 
+\begin{equation}\label{eq:LP_prob}
+    \begin{aligned}
+        &\min_{x} c^T{x}\\
+        &\text{s.t.} \ \tilde{A}\theta\le{\tilde{b}}
+    \end{aligned}
+\end{equation}
+where 
+\begin{equation}
+    \tilde{A}=\begin{bmatrix}
+        -A&-\mathbf{1}\\
+        A&\mathbf{-1}
+    \end{bmatrix}, \quad
+    \mathbf{1} = [1\ 1 \ ... \ 1]^T, \quad
+    \tilde{b}=\begin{bmatrix}
+        -y\\
+        y
+    \end{bmatrix}
+\end{equation}
+
+\section{$\ell_1$-norm parameter estimation}
+The $\ell_1$-norm parameter estimation is performed by solving the following optimization problem: 
+{\large{
+    \color{red}
+    \begin{equation}\label{eq:lone}
+        \theta_{\ell_1} = \arg\min_{\theta\in\mathbb{R}^p} \Vert y-A\theta \Vert_1 = \arg \min_{\theta\in\mathbb{R}^p} \sum_{i=1}^m \vert y_i-a_i^T\theta \vert 
+    \end{equation}
+}}
+In a similar way we have seen for the $\ell_2$ and $\ell_1$ estimators, can be demonstrated that under the assumption of the uncertainty entering the problem as an equation error and the noise samples $e(k)\sim\mathcal{L}(\mu,b)$\footnote{
+    Laplacian probability distribution
+}, the $\ell_1$-norm estimator is consistent, in the sense that
+\begin{equation}
+    \lim_{N\to\infty} \mathbb{E}[\theta_{\ell_1}]=\theta
+\end{equation}
+Also in this case the problem (\ref{eq:lone}) can be recasted as an LP one, introducing some additional slack variables $t_i$ for each one of the terms of the terms in the summation:
+\begin{equation}
+    \begin{aligned}
+        &\min_{\theta\in\mathbb{R}^p,t\in\mathbb{R}^m} \sum_{i=1}^m t_i\\
+        &\text{s.t.} \ 
+        \vert y_i-a_i^T\theta \vert \le t_i  \quad i=1,..., m
+    \end{aligned}
+\end{equation}
+Defining $x=[\theta,t]\in\mathbb{R}^{p+m}$ as the augmented optimization variable, the standard form of a \textit{Linear Program} defined as in (\ref{eq:LP_prob}), by putting:
+\begin{equation}
+    \tilde{A}=\begin{bmatrix}
+        -A&-I\\
+        -A&I
+    \end{bmatrix}, \ b=\begin{bmatrix}
+        -y\\
+        y
+    \end{bmatrix}
+\end{equation}
+where $I$ is the identity matrix $m\times{m}$.
 
 \section{Final remarks}
 Real experimets have data characterized by noise and in general the consistency property does not hold, in some situations in which the problem has a particular structure the assumptions required are perfectly fulfilled. We have understood that the most critical problem to manage is the second assumption which require the error to be white, zero mean and Gaussian (very strong assumptions!), moreover the resulting noise structure reaches a quite strange conclusion in which it is required that the system and the sensor share a part of their model. \\
 In the following we will see another approach that, differently from LS, replaces the Assumption (2) with something that is significantly \textit{less strong}.
+
