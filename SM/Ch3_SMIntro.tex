@@ -161,3 +161,156 @@ Here, among all the possible estimator in the class (E1), we consider the algori
 \noindent 
 Note the that, in the case of $\mathcal{D}_\theta \subseteq \mathbb{R}^2$ the minimum volume containing $\mathcal{D}_\theta$ is a rectangular shape whose sides are the parameter uncertainty intervals associated to $\theta_1$ and $\theta_2$.
 
+\subsubsection{\color{orange}Usefulness of the PUIs}
+Suppose you have for the following model, the corrensponding PUIs:
+\begin{equation*}
+    G(z)=\frac{\theta_2}{z+\theta_1} \quad
+    \theta_2 \in [\underline{\theta}_2, \ \overline{\theta}_2] = PUI_{\theta_2}, \quad
+    \theta_1 \in [\underline{\theta}_1, \ \overline{\theta}_1] = PUI_{\theta_1}
+\end{equation*}
+Moreover, you assume you want to derive a Lead/Lag controller for such a system. It is well known that the main idea behind this approach is having a representation of the loop function $L(s)$, and adding a certain number of dynamic networks in order to change the shape of $L(s)$ itself, in order to obtain a certain $\omega_{c, des}$ In this framework, we have not a single loop function but a cloud of them, from which we can retrieve a bound of  some type in order to derive a controller in the \textbf{limit cases}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{img/Nichols.jpeg}
+    \caption{Nichols plot of the loop function}
+\end{figure}
+At this aim, the following figure for example shows the \textit{frequency response} on the Nichols' Plot of the loop function. According to the choice of the parameters one can obtain a different plot in the range of curves delimited by $[L_{min}, L_{max}]$.
+
+\subsection{Geometric shape of the Feasible Parameter Set}
+In the case we have a linear time-invariant system where the uncertainty can be described by means of an unknown but bounded \textit{equation error} $e(k)$, we can obtain a particular shape of the FPS which makes the problem particularly 'simple' to solve. \\
+For sake of simplicity, the description of such a property by using a first order system ($n=1$) is done. At this aim, we know that the transfer function has the shape:
+\begin{equation}
+    G(z)=\frac{\theta_2{z}}{z+\theta_1} \longrightarrow
+    G({q^{-1}}) = \frac{\theta_2}{1+\theta_1{q^{-1}}}=\frac{y(k)}{u(k)}
+\end{equation}
+From which you can find that the regression form is:
+\begin{equation}
+    y(k)+\theta_1{y(k-1)}=\theta_2{u(k)} \iff 
+    y(k) = -\theta_1{y(k-1)}+\theta_2{u(k)}
+\end{equation}
+This result has been issued by using the \textbf{a-priori information on the system}: LTI and $n=2$. On the other hand, we know that the noise enters the equation as an \textit{unknown but bounded} equation error $e(k)$, that is
+\begin{equation*}
+    \vert e(k) \vert \le \Delta_e   \quad k=1,..., N
+\end{equation*}
+Finally, the \textbf{a-posteriori information} are the experimentally collected data, which both are corrupted by measurement noise. 
+\begin{equation*}
+    \tilde{u}(k)=u(k)+\xi(k), \quad 
+    \tilde{y}(k)=y(k)+\eta(k) \quad \forall k=1, ..., N
+\end{equation*}
+Putting all together, we can find the implicit mathematical formulation of the FPS as follows:
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_\theta = &\{
+            \theta\in\mathbb{R}^2: \ 
+            \tilde{y}(k)=-\theta_1\tilde{y}(k-1)+\theta_2{\tilde{u}(k)} + e(k), \quad k=2, ..., N, \\
+            & \vert e(k) \vert \le \Delta_e   \quad k=1,..., N
+        \}=\\
+        &=\{\theta\in\mathbb{R}^2: \
+            \vert
+            \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)}
+            \vert  \le \Delta_e, \quad k=2,..., N
+        \}=\\
+        &=\{ \theta\in\mathbb{R}^2: \ -\Delta_e \le 
+            \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)}
+            \le \Delta_e, \quad k=2,...,N
+        \}=\\
+        &=\{\theta\in\mathbb{R}^2: \
+            {\color{red}\theta_1\tilde{y}(k)-\theta_2\tilde{u}(k) \le \Delta_e-\tilde{y}(k)} \quad \textsf{(C1)} \\
+            &\qquad \qquad \quad{\color{blue}-\theta_1\tilde{y}(k)+\theta_2\tilde{u}(k) \le \Delta_e+\tilde{y}(k)} \quad \textsf{(C2)}, \quad k=2, ..., N
+        \}
+    \end{aligned}
+\end{equation}
+\noindent
+For each $k$, from $\mathcal{D}_\theta$ we obtain a couple of straight lines. Let us represent them by computing the constraints $\textsf{(C1)}$ and $\textsf{(C2)}$ for $k=2,3$
+
+\subsubsection{Constraints for \color{red} $k=2$}
+\begin{align}
+    \tag{\color{red}\textsf{C1}}
+    &\begin{aligned}\label{eq:c1_1}
+        &\tilde{y}(2)+\theta_1{\tilde{y}(1)}-\theta_2\tilde{u}(2) \le \Delta_e \\
+        &\theta_2 \ge \frac{\tilde{y}(1)}{\tilde{u}(2)}\theta_1 + \frac{\tilde{y}(2)-\Delta_e}{\tilde{u}(2)}
+    \end{aligned}\\
+    \tag{\color{blue}\textsf{C2}}
+    &\begin{aligned}\label{eq:c1_1}
+        &\tilde{y}(2)+\theta_1{\tilde{y}(1)}+\theta_2\tilde{u}(2) \le -\Delta_e \\
+        &\theta_2 \le \frac{\tilde{y}(1)}{\tilde{u}(2)}\theta_1 + \frac{\tilde{y}(2)+\Delta_e}{\tilde{u}(2)}
+    \end{aligned}
+\end{align}
+We can note that such lines have the \textbf{same angular coefficient} but different \textbf{intercept}. Roughly speaking they are parallel straight lines, that in form of inequalities define some \textit{halfplanes}. Since in the FPS the constraints must be satisfied \textbf{for each $k$}, we take the intersection of such constraints. In the specific case they result in a \textbf{strip}. Such a set is unbounded, this is related to the fact we used a single constraints against two degree of freedom (that is 2 parameters). 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.22]{img/strip.jpeg}
+    \caption{$\mathcal{D}_\theta$ resulting from a single equation}
+\end{figure}
+\noindent
+A possible representation is given in the figure above. Now, in order to obtain a bounded set we must collect $k=3$ data while using at least 2 equations resulting in 2 pairs of constraints $\textsf{C1-C2}$.
+\subsubsection{Constraints for \color{red} $k=3$}
+Following the same reasoning we obtain:
+\begin{align}
+    \tag{\color{red}\textsf{C1}}
+    &\begin{aligned}\label{eq:c1_1}
+        &\tilde{y}(3)+\theta_1{\tilde{y}(2)}-\theta_2\tilde{u}(3) \le \Delta_e \\
+        &\theta_2 \ge \frac{\tilde{y}(2)}{\tilde{u}(3)}\theta_1 + \frac{\tilde{y}(3)-\Delta_e}{\tilde{u}(3)}
+    \end{aligned}\\
+    \tag{\color{blue}\textsf{C2}}
+    &\begin{aligned}\label{eq:c1_1}
+        &\tilde{y}(3)+\theta_1{\tilde{y}(2)}+\theta_2\tilde{u}(3) \le -\Delta_e \\
+        &\theta_2 \le \frac{\tilde{y}(2)}{\tilde{u}(3)}\theta_1 + \frac{\tilde{y}(3)+\Delta_e}{\tilde{u}(3)}
+    \end{aligned}
+\end{align}
+
+\noindent
+Combining the two halfplanes with the ones obtained before, we obtain that \textbf{intersection is a convex set}, and in particular is a \textbf{polytope}. Note that the angular coefficient for the couple of lines derived putting $k=3$, clearly is different than the one we have obtained for $k=2$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{img/polytope1.jpeg}
+    \caption{$\mathcal{D}_\theta$ resulting from a pair of equations}
+\end{figure}
+
+{\color{blue}
+\noindent
+Let us remind that the FPS for sure contains $\theta_{true}$
+if and only if all the a-priori assumptions are correct, otherwise the FPS will be \textbf{empty}!}\\
+It is remarkable, that this was a case in which by inspection you can read the $PUI$, however we need to generalize. In particular the problem of finding a $PUI$ in the hypotesis of LTI systems with equation error noise structure can be recasted in the solution of \textbf{two standard Linear Programming (LP) problems}.\footnote{
+    \noindent
+    A \textbf{Linear Programming (LP) problem} is a convex optimization problem of the form
+    \begin{equation*}
+        \min_{x\in\mathbb{R}^n} {c^T{x}} \quad \text{subject to} \ Ax \le b
+    \end{equation*}
+    This takes into account all the situations when the problem can be \textit{exactly written} as the minimization of a \textbf{linear function} of the optimization variable subject to \textbf{a set of linear inequalities and/or equalities constraints}.
+}
+
+\section{PUIs computation by mean of LP problems solution} 
+We know that for a certain parameter $\theta_j$, $j=1,...,p$,  the related interval is $PUI=[\underline{\theta}_j, \overline{\theta}_j]$. Under assumption of having a LTI system with Unknown But Bounded error.
+\begin{align}
+    \label{eq:th_under}
+    &\underline{\theta}_j \doteq \min_{\theta\in\mathcal{D}_\theta} \theta_j= \min_{\theta\in\mathbb{R}^n} \theta_j 
+    \qquad \qquad \qquad  \text{s.t.} \begin{cases}
+        \tilde{y}(k)+... \le \Delta_e\\
+        \tilde{y}(k)+... \le -\Delta_e
+    \end{cases} \ k=n+1, ..., N\\
+    \label{eq:th_over}
+    &\overline{\theta}_j \doteq \max_{\mathcal{D}_\theta} {\theta_j} = \max_{\theta\in\mathbb{R}^n} {\theta_j}=\min_{\theta\in\mathbb{R}^n} {-\theta_j} 
+    \quad  \text{s.t.} \begin{cases}
+        \tilde{y}(k)+... \le \Delta_e\\
+        \tilde{y}(k)+... \le -\Delta_e
+    \end{cases} \ k=n+1, ..., N
+\end{align}
+
+\noindent
+Note that both the problems (\ref{eq:th_under}) and (\ref{eq:th_over}) can be rewritten in the form of an LP problem by suitably choosing $c$ and by arranging the set of constraints in suitable matrices $A$ and $b$. For example when we want to compute the PUI for the $\theta_1$ parameter for a first order system, the direction $c$ will be $c=[1 \quad 0]^T$, then for $\theta_2$, $c=[0 \quad 1]^T$.\\
+In conclusion, we have understand that the problem of finding the PUIs for $p$ parameters in the described setting, is leading to the solution of $2p$ LP problems, whose solutions are \textbf{global ones}, the problem in this case can be exactly solved without adding any conservativeness!\\
+
+\noindent
+The most critical issue of using such an approach is that, despite any type of experimental set-up can be recasted into a model having an equation error noise structure, I rarely am able to retrieve a bound $\Delta_e$. 
+
+\section{Final remarks}
+In this section we have introduced the \textit{Set-Membership approach} for the model parameters estimation. Next, we have analysed the main ingredients, and introducing the concept of \textbf{Feasible parameter set} we have understood that such an approach leads with itself a robust way for describing the parameters, embedding the uncertainty which comes from the data collection. This has been carried out by properly defining the \textit{Parameter Uncertainty Interval}. \\
+
+In the last part we have applied all of the features of the described approach starting from the simplest case in which the model to be identified was LTI and the noise sample unknonwn but bounded. By suitably arranging the mathematical constraints derived by putting together all the a-priori and a-posteriori information we have recasted the problem of finding the PUIs in the solution of a couple of LP problems which leads to global minima. Finally, analyzing the problem of SM Identification in this way was mainly of theoretical and conceptual interest since we have seen that retrieving a bound $\Delta_e$ on the error is practically impossible. Other approaches embedding a complete description of the noise samples are needed.
+
+

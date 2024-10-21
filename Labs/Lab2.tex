@@ -67,18 +67,18 @@ Politecnico di Torino}
     \begin{equation}
         \begin{aligned}
             \mathcal{D}_\theta=\{
-                &\theta\in\mathbb{R}^2: \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{u(k)}=e(k), k=2,3,4\\
+                &\theta\in\mathbb{R}^2: \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)}=e(k), k=2,3,4\\
                 &\vert e(k) \vert \le \Delta_e \ k=1,...,4 
             \}=\\
             &\{
-                \theta \in \mathbb{R}^2: \vert \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{u(k)} \vert \le \Delta_e, \ k=2,3,4
+                \theta \in \mathbb{R}^2: \vert \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)} \vert \le \Delta_e, \ k=2,3,4
             \}=\\
             &\{
-                \theta \in \mathbb{R}^2: -\Delta_e \le \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{u(k)} \le \Delta_e, \\ &k=2,3,4
+                \theta \in \mathbb{R}^2: -\Delta_e \le \tilde{y}(k)+\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)} \le \Delta_e, \\ &k=2,3,4
             \}=\{
                 \theta\in\mathbb{R}^2: 
-                {\color{red}\theta_1\tilde{y}(k-1)-\theta_2{u(k)} \le \Delta_e -\tilde{y}(k)},\\
-                &{\color{blue}-\theta_1\tilde{y}(k-1)+\theta_2{u(k)} \le \Delta_e +\tilde{y}(k)}
+                {\color{red}\theta_1\tilde{y}(k-1)-\theta_2{\tilde{u}(k)} \le \Delta_e -\tilde{y}(k)},\\
+                &{\color{blue}-\theta_1\tilde{y}(k-1)+\theta_2{\tilde{u}(k)} \le \Delta_e +\tilde{y}(k)}
             \} \Longrightarrow \text{\small(see next slide)}
         \end{aligned}
     \end{equation}
@@ -280,8 +280,9 @@ Politecnico di Torino}
         where: 
         \begin{align}\label{eq:opt_prob}
             \underline{\theta}_j = \min_{\theta\in\mathcal{D}_\theta} \theta_j, \quad 
-            \overline{\theta}_j = \max_{\theta\in\mathcal{D}} \theta_j \Rightarrow 
-            \overline{\theta}_j = -\min_{\theta\in\mathcal{D}} -\theta_j
+            \overline{\theta}_j = \max_{\theta\in\mathcal{D}
+            _\theta} \theta_j \Rightarrow 
+            \overline{\theta}_j = -\min_{\theta\in\mathcal{D}_\theta} -\theta_j
         \end{align}
     \end{definition}
     
@@ -310,7 +311,7 @@ Politecnico di Torino}
             \end{bmatrix}, \quad 
             k=3,...,N
         \end{align*}
-    }}We have seen that the derived set is a polytope that is a convex one, moreover the objective of the problems in (\ref{eq:opt_prob}) is also convex (in particular is linear). The minimization of a linear objective over a polytope raises a problem of \alert{\textbf{Linear Programming (LP)}}. Well known algorithms (eg. \textit{Barrier method}) have been developed in order to solve such problems.
+    }}We have seen that the derived set is a polytope that is a convex one, moreover the objective of the problems in (\ref{eq:opt_prob}) is also convex (in particular is linear). The \alert{minimization of a \textbf{linear objective} over a \textbf{polytope}} raises a problem of \alert{\textbf{Linear Programming (LP)}}. Well known algorithms (eg. \textit{Barrier method}) have been developed in order to solve such problems.
 \end{frame}
 
 
@@ -356,7 +357,7 @@ Politecnico di Torino}
             $PUI_{\theta_5}$\vline\vline&19.645&23.017&21.331&21.41\\
         \end{tabular}
     \end{table}
-    Also the  \textbf{central estimates} have been provided. Note that all of the $\theta_j$ are inside the associated PUI.
+    Also the  \textbf{central estimates} have been provided. Note that all of the $\theta_j^{\text{true}}$ are inside the associated PUI.
 \end{frame}     
 
 
