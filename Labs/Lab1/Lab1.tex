@@ -1,0 +1,48 @@
+\documentclass{beamer}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{multicol}
+\justifying
+
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+
+\title[SM SysId with EE noise structure]{
+    \huge\textbf{Laboratory of robust identification and Control}
+}
+%{\textbf{Lab \#2: Set-Membership System Identification with Equation Error noise structure \\
+%(Unknown But Bounded noise)}}
+
+\subtitle{Lab\#1 Solution: $\ell_p$-norm estimators}
+
+\author[Carlo Migliaccio]{Carlo Migliaccio}
+
+\institute[PoliTO]{Master's Degreee in Computer Engineering\\
+Politecnico di Torino}
+
+\date{October 2024}
+
+\AtBeginSection{
+    \begin{frame}
+        \frametitle{System Identification: a statistical approach}
+        \framesubtitle{$\ell_p$-norm estimators}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+    \frametitle{System Identification: a statistical approach}
+        \framesubtitle{$\ell_p$-norm estimators}
+    \tableofcontents
+\end{frame}
+
+\section{Problem 1: Least-Squares estimates ($\ell_2$-norm estimator)}
+
+\section{Problem 2: $\ell_\infty$-norm estimator (LP formulation)}
+
+\section{Addendum: $\ell_1$-norm estimator (LP formulation)}
+\end{document}

@@ -6,3 +6,14 @@ main.log
 main.out
 main.toc
 main.synctex.gz
+*.fls
+*.out
+*.nav
+*.log
+*.snm
+*.gz
+*.toc
+*.fdb_latexmk
+*.aux
+*.vrb
+*.synctex(busy)
