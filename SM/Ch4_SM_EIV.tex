@@ -2,7 +2,7 @@
 
 We have seen in the last chapter that an equation-error noise structure leads to a solution of LP problems for obtaining the Parameter Uncertainty Intervals, however, we have seen that there are some drawbacks. 
 First of all the way we can find a bound $\Delta_e$ on the noise samples.
-Then, the objective here is to find a way for dealing with the 'original' problem, that is the one using the output and input samples corrupted by noise.
+Then, the objective here is to find a way for dealing with the 'original' problem, that is the one using the output and input samples corrupted by noise. In order to gradually present all the needed ingredients for properly solving the problem, we show in turn general teoretical results and examples in which such results are applied to our problem of \textit{System Identification}.
 
 \section{ Feasible Parameter Set in the EIV set-up}
 In order to define also for this type of set-up the feasible parameter set, we have to follow the same road as we have done before. In particular we have to put together:
@@ -82,7 +82,107 @@ In this framework the problem of finding the PUIs becomes:
     \end{equation}
 }}
 
+\section{Convex relaxation for Polynomial Optimization Problems (POPs)}
+\begin{center}
+    \textsf{
+    In this section we will introduce some general theoretical results on polynomial optimization problems, that -- how we have seen -- are the ones arising in the definition of the extended feasible parameter set (EFPS). We will start by formulating them, we will analyze the type of sets they produce and finally we will introduce the concept of \textbf{convex relaxation}.}
+\end{center}
 
+\noindent 
+Let us consider the following general optimization problem:
+\begin{equation}
+    \begin{aligned}
+        \min_{x} &f_0(x)\\ 
+        &\text{s.t.} \ f_k(x)\le{0} \quad k=1, ..., l\\
+        &f_k(x)=0 \quad k=l+1,...,m
+    \end{aligned}
+\end{equation}
+where $f_0$ and $f_k, \ k=1,...,m$ are \textbf{multivariate polynomials} in the optimization variable $x$. Giving an example if $x=[x_1\ x_2\ x_3]^T$, an example of $f_0$ is
+\begin{equation*}
+    f_0(x)=x_1^2+x_2{x_3^3}+x_1^5{x_2^3}+7{x_3^2}
+\end{equation*}
+All POPs can be written, for sure, in the so-called \textbf{epigraphic form} by introducing a scalar (slack) variable $\gamma$.
+
+\begin{multicols}{2}
+    \noindent
+    \textbf{\color{red}Original formulation}
+    \begin{equation}
+        \begin{aligned}
+            \min_{x\in\mathbb{R}^n} &\ f_0(x)\\ 
+            &\text{s.t.} \ f_k(x)\le{0} \quad k=1, ..., l\\
+            &f_k(x)=0 \quad k=l+1,...,m
+        \end{aligned}
+    \end{equation}
+    \newcolumn\\
+    \textbf{\color{red}Epigraphic formulation}
+    \begin{equation}
+        \begin{aligned}
+            \min_{x\in\mathbb{R}^n, \gamma \in \mathbb{R}} &\ \gamma\\ 
+            &\text{s.t.} \ f_0(x)\le\gamma\\
+            &f_k(x)\le{0} \quad k=1, ..., l\\
+            &f_k(x)=0 \quad k=l+1,...,m
+        \end{aligned}
+    \end{equation}
+\end{multicols}
+\noindent
+By rewriting a generic POP in the epigraphic form, it becomes a problem of \textbf{minimizing a linear function over a non-convex set described by polynomial constraints} (this is also true  for the unconstrained case).
+
+\begin{figure}[h] \label{fig:non-convex}
+    \centering
+    \includegraphics[scale=0.5]{img/nonconvex.png}
+    \caption{Example of min a linear objective (thin line) over a non-convex set (sky-blue)}
+\end{figure}
+
+The figure (\ref{fig:non-convex}) shows the general idea. We are moving a linear objective (thin lines in black) over the set in sky-blue derived by the polynomial (so non-convex) constraints. The thin lines are the so-called \textit{level-curves} in order to minimize $\theta_1$. Moreover the orange point is a \textbf{local minimum}, while the red one is the \textbf{global minimum}.\\
+
+\noindent
+\textbf{\color{red}Important remark:} since a generic POP can written in epigrapigh form, we can note that the non-convexity of  the problem is now \textbf{completely embedded} in the description of the set of constraints $\to$ whether we want to compute the \textbf{global optimal solution} we have to deal with the non-convexity of the set of constraints. It is very high the probability of getting stuck in local minima.\\
+
+\begin{definition}[Convex hull of a non-convex set] Given a non-convex set $\mathcal{S}$, the \textbf{convex hull} for it is the smallest  convex-set including $\mathcal{S}$. 
+\end{definition}
+
+A very-nice property is that the \textbf{min/max} computed on the convex hull is equal to the one computed on the original set. In this way we gain the convexity of the problem. 
+
+In other words,if we are able to write down the equations describing the convex hull $C_\mathcal{S}$ of the non-convex set $\mathcal{S}$ we have that:
+\begin{equation}
+    \min_{x\in{C_\mathcal{S}}} f(x) = \min_{x\in\mathcal{S}} f(x)
+\end{equation}
+The drawback here is that, in general, obtaining a mathematical description of $C_\mathcal{S}$ is a quite difficult problem.\\
+In the particular case of POPs, it is possible to compute a \textbf{convex relaxation os $\mathcal{S}$} depending on a parameter called the \textbf{order of relaxation} $\delta$.
+
+\begin{figure}[h]
+    \centering
+    \subfigure[Convex hull $C_\mathcal{S}$]{
+        \includegraphics[scale=0.5]{img/convex_hul..png}
+    }
+    \subfigure[Relaxing the convex hull by $\delta$]{
+        \includegraphics[scale=0.5]{img/relax.png}
+    }
+\end{figure}
+\begin{figure}[h]
+    \centering    
+\end{figure}
+
+For a given $\delta$ we have different relaxed sets as you can see in the figure, moreover for $\delta\to\infty$ the relaxed set coincides with the convex hull in red.\\
+All of this concepts are then applied to our optimization problem which is aimed to find the extrema of the Parameter Uncertainty Intervals for our problem of System Identification. In this case comes up an interesting property, that is, for sure whatever is the order $\delta$, we are including the real PUI. More specifically, we have that for each $k$ the relaxed solutions $\underline{\theta}_k^{\delta}$ and $\overline{\theta}_k^{\delta}$ are such that:
+{\large{
+    \begin{equation}
+        \underline{\theta}_k^{\delta} \le \underline{\theta}_k
+        \quad 
+        \overline{\theta}_k^{\delta} \le \overline{\theta}_k
+    \end{equation}
+}}
+moreover it holds that: 
+\begin{equation}
+    \lim_{\delta\to\infty} \underline{\theta}_k^{\delta} = \underline{\theta}_k \quad
+    \lim_{\delta\to\infty} \overline{\theta}_k^{\delta} = \overline{\theta}_k
+\end{equation}
+
+In order to solve a POP by means of \textit{Lassere convex  relaxation approach} in MATLAB we use:
+\begin{enumerate}
+    \item \textsf{SparsePOP} that given a polynomial optimization problem and the order of relaxation $\delta$ provides a \textit{Semidefinite relaxed problem (SDP)};
+    \item Finally \textsf{SparsePOP} calls the optimization toolbox \textsf{SeDuMi} which solves  the given SDP. 
+\end{enumerate}
  
 
 
