@@ -169,7 +169,7 @@ All of this concepts are then applied to our optimization problem which is aimed
     \begin{equation}
         \underline{\theta}_k^{\delta} \le \underline{\theta}_k
         \quad 
-        \overline{\theta}_k^{\delta} \le \overline{\theta}_k
+        \overline{\theta}_k^{\delta} \ge \overline{\theta}_k
     \end{equation}
 }}
 moreover it holds that: 
@@ -273,7 +273,7 @@ As far as the PUI are concerned, we know that the objective function is simply, 
     f_0(\theta)=\theta_1
 \end{equation} for the 1$^{st}$ parameter. The \texttt{objPoly} structure must be built as follows:
 \begin{verbatim}
-objPoly.typeCone=-1;                %no use for this field
+objPoly.typeCone=1;                %no use for this field
 objPoly.noTerms=1;                  %number of rows of 'supports' matrix
 objPoly.dimVar=5+2*N;               %number of colummns of 'supports' matrix
 objPoly.degree=1;                   %degree for the objective function
@@ -339,8 +339,8 @@ Such a procedure must be repeated for all of the equality/inequality constraints
 \noindent
 Other data structures to be provided to the \texttt{sparsePOP()} command are \texttt{lbd}, \texttt{ubd}, \texttt{param}. As far as the first pair (lower and upper bounds on the optimization variables), you have to use $\pm{10}^{10}$ in order to indicate $\pm{\infty}$ for the parameters $\theta_i$, for the samples $\eta$ and $\xi$ the bounds $\pm\Delta_\eta$ and $\pm\Delta_\xi$ must be used. As far as \texttt{param} is concerned:
 \begin{verbatim}
-param.relaxOrder=1;                 %order of relaxation (>=delta_min)
-param.solver='active-set';          %type of solver to be used
+param.relaxOrder=1;                     %order of relaxation (>=delta_min)
+param.POPsolver='active-set';           %type of solver to be used
 \end{verbatim}
 
 \subsection{Retrieving the solution of the problem}
