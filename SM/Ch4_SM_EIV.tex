@@ -354,7 +354,7 @@ Once all of the data structures have been built, we can call the \texttt{sparseP
 In order to retrieve the (refined) solution of the optimization problem:
 \begin{itemize}
     \itemsep0em
-    \item \texttt{POP.objValueL} contains the \textbf{optimal solution} of the optimization problem\footnote{\texttt{theta\_min(i)=POP.objValueL} if you use a vector to store the $\underline{\theta}_i$. \textbf{Important: } when you are computing $\overline{\theta}_i$ you must write \texttt{theta\_max(i)=-POP.objValueL}};
+    \item \texttt{POP.objValueL} contains the \textbf{optimal solution} of the optimization problem\footnote{\texttt{theta\_min(i)=POP.objValueL} if you use a vector to store the $\underline{\theta}_i$. \textbf{Important: } when you are computing $\overline{\theta}_i$ you must write \texttt{theta\_max(i)=-POP.objValueL}. Due to the structure of the problem also \texttt{POP.xVectL} can be used, it is not necessary the change of sign that instead is needed in the \texttt{coef} vector};
     \item \texttt{POP.xVectL} contains the \textbf{optimizer} (minimizer in our case); 
 \end{itemize}
 
