@@ -106,7 +106,7 @@ In order to perform the identification $N$ samples of the inputs $\tilde{u}_1(k)
 
 \subsection{Feasible Parameter set $\mathcal{D}_\theta$}
 The next step is to put everything together in order to define the \textbf{feasible parameter set} $\mathcal{D}_\theta$:
-\begin{equation}
+\begin{equation} \label{eq:FPS_1}
     \begin{aligned}
         \mathcal{D}_\theta = \big\{
             \theta\in\mathbb{R}^{\sum_{i=1}^p{2n_i+1}}: \quad  
@@ -135,7 +135,7 @@ More explicitly we can substitute the transfer functions $G_i(q^{-1})$ with the 
                     \beta_0^p+\beta_1^p{q^{-1}}+...+\beta_{n_p}^p{q^{-n_p}}
                 }{1+\alpha_1^p{q^{-1}}+...+\alpha_{n_p}^p{q^{-n_p}}
                 }
-            }u_p(k),  \quad k=2n+1,...,N\\
+            }u_p(k),  \quad k=n+1,...,N\\
             &y(k)=\tilde{y}(k)-\eta(k), \quad
             u_i(k)=\tilde{u}_i(k)-\xi_i(k), \quad i=1,...,p\\
             &
@@ -149,4 +149,123 @@ Starting from this point, how can we going on? Also in this case we could be tem
     \item The temptation raises up from the moment that we grasp to the \textit{superposition principle for LTI systems} according which if we apply the inputs one at a time, the output will show a behaviour which is related only to that input itself. Unfortunately, in real-world applications is not always possible to "turn-off" some inputs while keeping unchanged the system, this is also because the great majority of the plants are \textit{only approximatively linear}.
 \end{itemize}
 
-Another attempt could be doing the common denominator in  (\ref{eq:FPS_MIMO2}) and solving a unique huge identification problem. Again, still there are problems! The dimension of the problem quckly would explode making unsuitable \texttt{SparsePOP} for solving the problem exploiting convex relaxation techniques. Something different is needed... 
+\begin{comment}
+Another attempt could be doing the common denominator in  (\ref{eq:FPS_MIMO2}) and solving a unique huge identification problem. Again, still there are problems! The dimension of the problem quickly would explode making unsuitable \texttt{SparsePOP} for solving the problem exploiting convex relaxation techniques. Something different is needed... 
+\end{comment}
+
+\noindent
+In order to better understand the limitations behind the form (\ref{eq:FPS_1}), let us try going through the development of it. In particular, the (\ref{eq:FPS_1}) can be rewritten as: 
+
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_\theta = &\big\{
+            \theta\in\mathbb{R}^{\sum_{i=1}^p{2n_i+1}}:\\
+            & y(k)=\frac{
+                {\color{blue}N_1({D_2 \cdot D_3 \cdot \dots D_p})} {\color{red}u_1(k)}+
+                \dots+
+                {\color{blue}N_p({D_1\cdot D_2 \cdot \dots D_{p-1}})} {\color{red} u_p(k)}
+            }{{\color{blue}D_1 \cdot D_2 \dots D_p}}, \ k=n+1,...,N\\
+            &y(k)=\tilde{y}(k)-\eta(k), \quad
+            u_i(k)=\tilde{u}_i(k)-\xi_i(k), \quad k=1, ..., N \ i=1,...,p\\
+            &
+            \vert \eta(k) \vert \le \Delta_\eta, \quad \vert \xi_i(k) \vert \le \Delta_{\xi_i} \quad k=1,...,N \quad i=1,...,p
+            \big\}=\\
+            &{\color{red}=}\big\{
+                \theta\in\mathbb{R}^{\sum_{i=1}^p{2n_i+1}}:\\
+                &\qquad{\color{blue}(D_1 \cdot D_2 \dots D_p)} {\color{red}y(k)} = 
+                {\color{blue}N_1({D_2 \cdot D_3 \cdot \dots D_p})} {\color{red}u_1(k)}+
+                \dots+\\
+                &\qquad +
+                {\color{blue}N_p({D_1\cdot D_2 \cdot \dots D_{p-1}})} {\color{red}u_p(k)}, \ k=n+1,\dots,N\\
+                &y(k)=\tilde{y}(k)-\eta(k), \quad
+                u_i(k)=\tilde{u}_i(k)-\xi_i(k), \quad k=1, ..., N \quad i=1,...,p\\
+            &\vert \eta(k) \vert \le \Delta_\eta, \quad \vert \xi_i(k) \vert \le \Delta_{\xi_i} \quad k=1,...,N \quad i=1,...,p
+            \big\}=\\
+            &{\color{red}=}\big\{
+                \theta\in\mathbb{R}^{\sum_{i=1}^p{2n_i+1}}:\\
+                &\qquad\big[   
+                    \underbrace{(1+\alpha_1^1{q^{-1}}+\dots+\alpha_{n_1}^1q^{-{n_1}})}_{\color{blue}D_1}+\dots+
+                    \underbrace{(1+\alpha_1^p{q^{-1}}+\dots+\alpha_{n_p}^p q^{-{n_p}})}_{\color{blue}D_p}
+                \big] {\color{red}y(k)} =\\
+                & \qquad \underbrace{(\beta_0^1 +\beta_1^1 q^{-1}+...+\beta_{n_1}^1 q^{-{n_1}})}_{\color{blue}N_1}
+                \underbrace{(1+\alpha_1^2{q^{-1}}+\dots+\alpha_{n_2}^2q^{-{n_2}})}_{\color{blue}D_2} %D2
+                \underbrace{(1+\alpha_1^3{q^{-1}}+\dots+\alpha_{n_3}^3q^{-{n_3}})}_{\color{blue}D_3} \dots\\
+                & \qquad \underbrace{(1+\alpha_1^p{q^{-1}}+\dots+\alpha_{n_p}^p q^{-{n_p}})}_{\color{blue}D_p} {\color{red}u_1(k)}+ %D3
+                \dots +  
+                \underbrace{(\beta_0^p+ \beta_1^p q^{-1}+...+\beta_{n_p}^p q^{-{n_p}})}_{\color{blue}N_p}\\
+                & \qquad \underbrace{(1+\alpha_1^1{q^{-1}}+\dots+\alpha_{n_1}^1q^{-{n_1}})}_{\color{blue}D_1} 
+                \underbrace{(1+\alpha_1^2{q^{-1}}+\dots+\alpha_{n_2}^2q^{-{n_2}})}_{\color{blue}D_2} \dots\\  
+                &\qquad \underbrace{(1+\alpha_1^{p-1}{q^{-1}}+\dots+
+                 \alpha_{n_{p-1}}^{p-1}q^{-{n_{p-1}}})}_{\color{blue}D_{p-1}} {\color{red}u_p(k)} \quad k=n+1,...,N\\
+                &y(k)=\tilde{y}(k)-\eta(k), \quad
+                u_i(k)=\tilde{u}_i(k)-\xi_i(k), \quad k=1, ..., N \quad i=1,...,p\\
+            &\vert \eta(k) \vert \le \Delta_\eta, \quad \vert \xi_i(k) \vert \le \Delta_{\xi_i} \quad k=1,...,N \quad i=1,...,p
+            \big\}
+    \end{aligned}
+\end{equation}
+
+where $N_i=N_i(q^{-1})$, $D_i=D_i(q^{-1})$. The notation is not so easy to read, however we have written it rigorously to understand that at the end, we can obtain a 'standard' regression form as in the 
+SISO case. Then, what is the problem? Explicit computation will lead to \textbf{high order polynomial constraints} in the unknown variables:
+\begin{equation}
+    \begin{aligned}
+    &\alpha_j^{i}, \quad i=1,...,p \quad j=1,...,n_i \\
+    &\beta_j^{i}, \quad i=1,...,p \quad j=0,...,n_i\\
+    &\eta(k), \xi_i(k), 
+    \quad k=n+1,...,N \quad i=1,...,p
+    \end{aligned}
+\end{equation}
+In general the computation of $PUI_{\theta_j}$ will lead us to POPs of order $n$, and whether $p$ would be high, the order of relaxation $\delta$ is going to be \textit{large} $\to$ bad news, since there will be the explosion of computational complexity and/or memory overflow because the size of data structures involved in the SDP problem -- obtained by applying convex relaxation techniques -- depends \textbf{exponentially} on the order of relaxation itself! This approach cannot be used neither for normal or large dimension identification problems. Something alternative is needed.
+
+\subsection{Reducing the computational complexity: partial outputs $z_i$}
+In order to reduce the computational complexity let us reformulate the problem by explicitly exploiting the fact that \textit{a MISO system is nothing but a collection of SISO systems}. Let us call $z_1,\dots,z_p$ the \textbf{partial outputs}, that is the output of the transfer functions $G_1,G_2,\dots,G_p$ before entering into the summing junction of the output $y(k)$:
+\begin{equation*}
+    z_1(k)=G_1(q^{-1})u_1(k) \quad
+    z_2(k)=G_2(q^{-1})u_2(k)  \quad \dots \quad
+    z_p(k)=G_p(q^{-1})u_p(k)
+\end{equation*}
+Now we can redefine the FPS by using such an observation obtaining:
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_{\theta}=\big\{
+            \theta\in\mathbb{R}^{\sum_{i=1}^p{2n_i+1}}: \ 
+            &\tilde{y}(k)-\eta(k) = z_1(k)+\dots+z_p(k) \ k=1,...,N\\
+            &z_i(k) = \frac{N_i(q^{-1})}{D_i(q^{-1})} (\tilde{u}_i(k)-\xi_i(k)), \ i=1,\dots,p \quad k=n_i+1,...,N\\
+            &\vert \eta(k) \vert \le \Delta_\eta, \quad \vert \xi_i(k) \vert \le \Delta_{\xi_i} \quad k=1,...,N \quad i=1,...,p
+        \big\}
+    \end{aligned}
+\end{equation}
+We cannot measure the samples $z_i(k)$ of the partial outputs, then such variables are unknowns. We have to look the problem into the \textbf{extended space} which includes all of the unknown variables (for the noise samples the same conclusion can be drawn). Then, let us define the\dots
+
+\subsection{Extended feasible parameter set $\mathcal{D}_{\theta, z, \eta, \xi}$}
+The \textbf{Extended feasible parameter set (EFPS)} has the following definition:
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_{\theta,z_1,z_2,...,z_p,\eta,\xi_1,\xi_2,...,\xi_p } = \big\{
+            &(\theta,z_1,z_2,...,z_p,\eta,\xi_1,\xi_2,...,\xi_p) \in \mathbb{R}^{\sum_{i=1}^p{2n_i+1}+(2p+1)N}: \\
+            &\tilde{y}(k)-\eta(k)= z_1(k)+\dots+z_p(k) \ k=1,...,N\\
+            &z_i(k)=-\alpha_i^{i}z_i(k-1) -\alpha_2^{i}z_i(k-2)-...-\alpha_{n_i}^i z_{i}(k-{n_i})+\\
+            &+\beta_0^{i}\tilde{u}_i(k)-\beta_0^{i}\xi(k)+...+\beta_{n_i}^{i}\tilde{u}_i(k-n_i)-\beta_{n_i}^i\xi_i(k) \\
+            &i=1,...,p \quad k=n_i+1,...,N\\
+            &\vert \eta(k) \vert \le \Delta_\eta, \quad \vert \xi_i(k) \vert \le \Delta_{\xi_i} \quad k=1,...,N \quad i=1,...,p
+        \big\}
+    \end{aligned}
+\end{equation}
+
+\noindent
+Extending the parameter space we can note that the EFPS involves only \textit{bilinear constrints}, then we can pick again as minimum order of relaxation $\delta=1$, that is crucial from a computational point of view.\\
+Now, we are adding all the samples of $z_1,...,z_p$ into the definition of the set. In principle we know that for a generic POP, the computational complexity depends \textit{exponentially also on the optimization variables}. However, even in this case can be proved that the problem of \textit{SM-ID of LTI MIMO systems with EIV noise structure} has the nice \textit{running intersection property}. This is the reason why we can use \textit{sparse convex relaxation techniques} which leads the computational complexity depending only \textbf{linearly} on the number of optimization variables.
+
+\subsection{PUI computation for MISO LTI systems}
+We have to solve a number $n_\theta=2\big(\sum_{i=1}^p{2n_i+1}\big)$ optimization problems of the form:
+
+{\normalsize{
+    \begin{equation}
+        PUI_j =[\underline{\theta}_j,\ \overline{\theta}_j], \quad \underline{\theta}_j = \min_{{\theta, z, \eta, \xi} \in\mathcal{D}_{\theta, z, \eta, \xi}} \theta_j, \quad
+        \overline{\theta}_j = \max_{{\theta, z, \eta, \xi} \in\mathcal{D}_{\theta, z, \eta, \xi}} \theta_j, \quad 
+        j=1,...,n_\theta
+    \end{equation}
+}}
+\noindent
+The problem can be properly formulated using suitable data structures of \texttt{SparsePOP}. This is the end of the fundamental theoretical aspects of SM-ID of MIMO systems with EIV noise structure.
+
