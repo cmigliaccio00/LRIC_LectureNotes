@@ -87,3 +87,62 @@ After this discussion, let us give further attention on the property (\ref{eq:ex
 \end{equation}
 where $\theta_i^c$ is the so-called \textbf{central estimate}  which can leverage on some nice properties how we will see in one of the next chapters. When the sign of the extrema is not the same, the uncertainty relative size is greater than the 1 (that is 100\%).
 
+\section{Toward the computational load reduction}
+We have seen in the previous sections a trial and error procedure for choosing either the dynamical order or the order of the multivariate polynomial $f$. The drawback of such an approach is that the computational complexity explode when the such a polynomial have high order. Practical examples are the best way to understand things. Let us do, then, an example.
+
+\subsubsection{Example}
+Suppose we want to estimate the parameters of the following nonlinear MISO system:
+\begin{equation*}
+    y(k)=\theta_1{u_1(k)}+\theta_2{u_1(k)u_2(k)}+\dots+
+    +\theta_p{u_1(k)\dots{u_p(k)}}
+\end{equation*}
+If we add the fact that both the inputs and the output are corrupted by bounded measurement noise. The feasible parameter set is defined as:
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_\theta = \{
+        \theta\in\mathbb{R}^p: \ &\tilde{y}(k)-\eta(k) = \theta_1 (\tilde{u}(k)-\xi_1(k)) + \theta_2 (\tilde{u}_1(k)-\xi_1(k)) (\tilde{u}(k)-\xi_2(k)) +\dots\\
+        &\theta_p (\tilde{u}_1(k)-\xi_1(k))\dots(\tilde{u}_p(k)-\xi_p(k)) \quad k=n+1,...,N\\
+        &\vert \eta(k) \vert \le \Delta_\eta \ k=1,...,N\\
+        &\vert \xi_i(k) \vert \le \Delta_xi \ k=1,...,N \ i=1,...,p
+    \}
+    \end{aligned}
+\end{equation}
+Now, considering the problem of computing the PUIs, we have to solve a POP whose constraints are at most of order $p+1$. Moreover, if $p$ is high, the minimum order of relaxation $\delta_{min}$ is high. Bad symptom! In order to \textbf{reduce the computational complexity} of the POP we can reformulate it by introducing new variables $z_j$ as follows:
+
+\begin{equation*}
+    \begin{aligned}
+        &\min_{\theta,\xi,\eta,z}  \theta_1\\
+        &\text{s.t.} \quad z_1(k)=\xi_1(k)\cdot\xi_2(k), \ 
+        z_2(k)=z_1(k)\cdot\xi_3(k), \ \dots, \ z_{p-1}(k)=z_{p-2}(k)\cdot{\xi_p}(k)\\
+        &\tilde{y}(k)-\eta(k)=\theta_1{u_1(k)}+\theta_1{\xi_1(k)}+\theta_2+\dots+\theta_p{z_{p-1}}
+    \end{aligned}
+\end{equation*}
+All of the constraints entering the optimization problem are now bilinear, then we can pick as minimum order of relaxation $\delta_{\min}=1$.
+
+\section{Block-oriented nonlinear systems}
+The SysId procedure for nonlinear system is quite challenging. When we have addressed the problem of identifying an LTI system (both SISO and MIMO), we had the information about the transfer function that was of crucial importance. For nonlinear system we cannot exploit such an information. In the most general case, assuming we can do some continuity assumptions, we can go through the steps we have described in order to identify the system, otherwise we have to exploit as much as possible the \textit{a-priori information} available on that system. In many situations we can know something about the \textbf{internal structure of the nonlinear system}. To this aim we propose the so-called \textbf{block-structured nonlinear systems}.
+
+\begin{definition}[Block oriented nonlinear systems] Block oriented nonlinear systems are nonlinear dynamical systems which are obtained by \textbf{connecting together} a number of subsystems such that each one of the subsystems can either be:
+\begin{itemize}
+    \itemsep-0.3em
+    \item a \textit{dynamical LTI system}
+    \item a \textit{static nonlinear system}
+\end{itemize}
+
+\subsection{Hammerstein system}
+
+This structure is characterized by the following features:
+\begin{enumerate}
+    \itemsep-0.3em
+    \item Internal signal $x(k)$ cannot be measured;
+    \item It is useful to describe physical systems which are essentially LTI systems but with a \textbf{significant input nonlinearity} such as input saturation, dead-zone and any other non linear effect in the actuation part.
+\end{enumerate}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.15]{img/hammer.jpeg}
+    \caption{Hammerstein system (block diagram)}
+\end{figure}
+The nonlinear part is often referred as $\mathcal{N}(\cdot)$ and it is a function of $u(k)$, while the linear part $\mathcal{L}$ is represented by a transfer function $G(q^{-1})$.
+    
+\end{definition}
+
