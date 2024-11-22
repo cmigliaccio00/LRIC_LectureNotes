@@ -124,10 +124,12 @@ The SysId procedure for nonlinear system is quite challenging. When we have addr
 
 \begin{definition}[Block oriented nonlinear systems] Block oriented nonlinear systems are nonlinear dynamical systems which are obtained by \textbf{connecting together} a number of subsystems such that each one of the subsystems can either be:
 \begin{itemize}
-    \itemsep-0.3em
+    \itemsep-0.4em
     \item a \textit{dynamical LTI system}
     \item a \textit{static nonlinear system}
 \end{itemize}
+
+\end{definition}
 
 \subsection{Hammerstein system}
 
@@ -139,10 +141,198 @@ This structure is characterized by the following features:
 \end{enumerate}
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.15]{img/hammer.jpeg}
+    \includegraphics[scale=0.2]{img/hammer.jpeg}
     \caption{Hammerstein system (block diagram)}
 \end{figure}
-The nonlinear part is often referred as $\mathcal{N}(\cdot)$ and it is a function of $u(k)$, while the linear part $\mathcal{L}$ is represented by a transfer function $G(q^{-1})$.
-    
-\end{definition}
 
+\subsection{Wiener system}
+The \textbf{Wiener system} has the nonlinear part $\mathcal{N}$ toward the output. $\mathcal{N}$ is a \textit{linear static map} from the output of the linear system to the output of the nonlinear block.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{img/Wiener.jpg}
+    \caption{Wiener system}
+\end{figure}
+\begin{remark}[\textbf{Features of the Wiener system}]
+    (i) the $x(k)$ signal cannot be measured; (ii) such a type of system is useful to describe systems which are essentially LTI but with a significant \textbf{ouput nonlinearity}.
+\end{remark}
+When dealing with \textbf{block-structured} systems, we assume that the nonlinear static subsystems can be described by means of polynomial functions, so that all the unmeasurable inner signal will be considered as optimization variables in the SysId problem. 
+\section{SM-ID of an Hammerstein system}
+\subsection{
+    More details on the blocks
+}
+In the Hammerstein system,the nonlinear part is often referred as $\mathcal{N}(\cdot)$ and it is a function of $u(k)$, while the linear part $\mathcal{L}$ is represented by a transfer function $G(q^{-1})$. Then: 
+
+\begin{equation}\label{eq:hammer}
+    \begin{cases}
+        y(k)&=-\alpha_1{y(k-2)}-\alpha_2{y(k-2)}-...-\alpha_n{y(k-n)}+\\
+        &\beta_0{x(k)}+\beta_1{x(k-1)}+...+\beta_n{x(k-n)}\\
+        x(k)&=\mathcal{N}(u(k))
+    \end{cases}
+\end{equation}
+where $\mathcal{N}(\cdot)$ is a \textbf{static linear map} between the input $u(k)$ and the internal output $x(k)$.\\
+As an \textit{additional a-priori information} about the structure of the static map, we can saym that:
+
+\begin{equation}
+    \begin{aligned}
+        x(k)&=\mathcal{N}(u(k))=\sum_{j=1}^m {\gamma_j \ \phi_j\ (u(k)) }=\\
+        &=\gamma_1\ {\phi_1\ (u(k))}+\gamma_2 \ {\phi_2\ (u(k))}+...+\gamma_m\ {\phi_m\ (u(k))}
+    \end{aligned}
+\end{equation}
+$\{\phi\}_j$, $j=1,...,m$ is a \textbf{set of basis function} selected on the base of our physical insights. In the case we do not have any other specifical information on the form of $\mathcal{N}$, we can surely selected (keeping in mind the Stone-Weirstrass theorem) the \textit{standard polynomial basis function}:
+\begin{equation*}
+    \phi_j=u^j(k) \quad   \forall j=1,...,m
+\end{equation*}    
+
+\subsection{System Identification procedure}
+As usual at this stage, when we want to formulate the problem of SysId we havo to put together a-priori and a-posteriori information. \begin{description}
+    \item[\textbf{Prior information on the system}] Since we have said that the system is an \textit{Hammerstein one} we know that:
+    \begin{enumerate}
+        \item \textsc{Nonlinear part ($\mathcal{N}$)} can be espressed how we have just seen. Moreover, note that there is no constant term (in other words there is no term with the power 0), since it is of little practical interest.
+        \item \textsc{Linear part ($\mathcal{L}$)} is described by $y(k)$ as in equation (\ref{eq:hammer})
+    \end{enumerate}
+    \item[\textbf{Prior information on the noise}] Here we assume an \textbf{Output Error (OE)} setting for sake of simplicity. We assume as always the boundedness of the noise samples
+    \begin{equation*}
+        \vert \eta(k) \vert \le \Delta_\eta \quad k=1,...,N
+    \end{equation*}
+    \item[\textbf{A-posteriori information: collected data}] Are the $N$ pairs $(u(k),\tilde{y}(k))$ experimentally collected by performing an open-loop experiment on the plant.
+\end{description}
+
+\noindent
+Putting all together we can retrieve the    \textbf{Feasible parameter Set} where the parameters are $\theta=[\alpha_1 \dots \alpha_n \ \beta_0 \dots \beta_n \ \gamma_1 \dots \gamma_m]$\footnote{
+    We can also split them into two parts: $\gamma$ that are the ones related to $\mathcal{N}$ and $\theta$ which are the ones related to $\mathcal{L}$.
+}: 
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_\theta=\big\{
+        \theta\in\mathbb{R}^{2n+1+m}: \ 
+        &y(k)=-\alpha_1{y(k-1)+...+\beta_n{x(k-n)}} \quad \forall{k=n+1,...,n}\\
+        & x(k)=\gamma_1{u(k)}+\gamma_2{u^2(k)}+...+\gamma_m{u^{m}(k)} \ k=1,...,n \\
+        &\tilde{y}(k)=y(k)+\eta(k), \quad 
+        \vert \eta(k) \vert \le \Delta_\eta \quad k=1,..., N
+    \big\}
+    \end{aligned}
+\end{equation}
+
+\noindent
+We know that we have to go on by computing the minimum for each theta in the derived set, that must be extended. There are mainly two approaches by which we can go on. In the former we \textit{eliminate the dependence on the inner variable $x$} by substituting it in the expression defining $\mathcal{L}$ while the former is about considering also the samples of the inner signal $x(k)$ as optimization variables. In the following we will consider separately the parameters of the static and the dynamic block of the overall Hammerstein system.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{img/hammer_OE.jpg}
+    \caption{Hammerstein system (OE setting)}
+\end{figure}
+
+\subsection{First approach: toward the definition of $\mathcal{D}_{\theta,\gamma,\eta}$}
+By using this first approach, we can eliminate the dependence of the set on $x(k)$ by substituting it in the first equation. The resulting \textbf{Extended feasible parameter set} is:
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_{\theta,\gamma, \eta}=\{&
+        \theta\in\mathbb{R}^{2n+1}, \gamma\in\mathbb{R}^{m}, \eta\in\mathbb{R}^N: \  
+        \tilde{y}(k)-\eta(k)=-\alpha_1[\tilde{y}(k-1)-\eta(k-1)]-\dots-\\
+        &-\alpha_n[\tilde{y}(k-n)-\eta(k-n)] +
+        \beta_0\gamma_1{u(k)} + \beta_0{\gamma_2}{u^2(k)} +\dots+\beta_0\gamma_m{u^m(k)}+\\
+        &+...+\beta_n{\gamma_1}{u(k-n)}+...+\beta_n{\gamma_m}{u^m(k-n)} \quad k=n+1,...,N\\
+        &\vert \eta(k) \vert \le \Delta_\eta \quad k=1,...,N
+    \}
+    \end{aligned}
+\end{equation}
+This set is defined by bilinear constraints; the PUIs can be computed as usual as: 
+\begin{equation}
+    PUI_{\theta_j} = [
+        \underline{\theta}_j,
+        \overline{\theta}_j
+    ] \qquad 
+    \underline{\theta}_j=\min_{\theta,\gamma,\eta\in{\mathcal{D}_{\theta,\gamma,\eta}}} \ {\theta_j}, \quad
+    \overline{\theta}_j=\max_{\theta,\gamma,\eta\in{\mathcal{D}_{\theta,\gamma,\eta}}} \ {\theta_j} 
+\end{equation}
+
+\begin{remark}
+    \textbf{Approach 1} leads to POPs with:
+    \begin{enumerate}
+        \itemsep-0.2em
+        \item $2n+1+m+N$ variables; 
+        \item max degree of the constraints equal to 2; 
+        \item N-n \textit{bilinear} polynomial constraints of order 2; 
+        \item 2N linear constraints (\small{$\vert \eta(k) \vert \le \Delta_\eta$})
+    \end{enumerate}
+\end{remark}
+
+\subsection{Second approach: toward the definition of $\mathcal{D}_{\theta,\gamma,x,\eta}$}
+Here we are not going to replace the $x(k)$ samples, we consider them as optimization variables. This leads to the following description of the EFPS:
+\begin{equation}
+    \begin{aligned}
+        \mathcal{D}_{\theta,\gamma,x,\eta} = \big\{&
+            \theta\in\mathbb{R}^{2n+1}, \gamma\in\mathbb{R}^m, x\in\mathbb{R}^N, \eta\in\mathbb{R}^N:\\
+            &y(k)=-\alpha_1{y(k-1)+...+\beta_n{x(k-n)}} \quad \forall{k=n+1,...,n}\\
+            & x(k)=\gamma_1{u(k)}+\gamma_2{u^2(k)}+...+\gamma_m{u^{m}(k)} \ k=1,...,n \\
+            &\tilde{y}(k)=y(k)+\eta(k), \quad 
+            \vert \eta(k) \vert \le \Delta_\eta \quad k=1,..., N
+        \big\}
+    \end{aligned}
+\end{equation}
+Again, we have bilinear constraints and the problem of finding the \textit{parameter uncertainty interval} can be formulated as usual: 
+\begin{equation}
+    PUI_{\theta_j} = [
+        \underline{\theta}_j,
+        \overline{\theta}_j
+    ] \qquad  
+    \underline{\theta}_j=\min_{\theta,\gamma,x,\eta\in{\mathcal{D}_{\theta,\gamma,x,\eta}}} \ {\theta_j}, \quad
+    \overline{\theta}_j=\max_{\theta,\gamma,x,\eta\in{\mathcal{D}_{\theta,\gamma,x,\eta}}} \ {\theta_j} 
+\end{equation}
+
+\begin{remark}
+    \textbf{Approach 2} leads to POPs with:
+    \begin{enumerate}
+        \itemsep-0.3em
+        \item $2n+1+m+2N$ optimization variables
+        \item max degree of the polynomial constraints equal to 2
+        \item $N-n$ polynomial constraints of order 2
+        \item $2N$ linear constraints (deriving from $\eta,x$)
+    \end{enumerate}
+\end{remark}
+
+The problem we have just presented satisfy the \textit{running intersection property} so that the \textit{Sparse convex relaxation} can be applied. Moreover the fact that we have bilinear constraints allows us to pick as minimum order of relaxation $\delta_{min}=1$. \\
+At this point it seems that all clear and suitable to solve the problem by using \texttt{sparsePOP} (for example). There is another problem to face related to the \textbf{well-posedness} of such a problem.
+
+\section{Identifiability for Hammerstein system}
+Let us consider the following Hammerstein systems:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{img/twohammer.jpg}
+    \caption{Two Hammerstein systems identical from the Input/Output point of view}
+\end{figure}
+
+%figure here
+\noindent
+It can be easily proved that $y_1(k)=y_2(k)$ provided that $\mathcal{N}_2=\mathcal{N}_1/\alpha$ and $\mathcal{L}_2=\alpha\mathcal{L}_{1}$ $\forall\alpha \in \mathbb{R}$. The Hammerstein system is not identifiable because we have an infinite number of solutions of the identification problem which are perfectly equivalent from the input/output point of view. We are able to draw two important conclusions:
+\begin{description}
+    \item[\textbf{Result 1}] No matter what is the technique that we are going to use we will not be able to estimate the exact parameters of the Hammerstein system generating the data, even if we are collecting \textit{noiseless data} and $N\to\infty$. This leads to an intrinsic \textbf{unidentifiability}.
+    \item[\textbf{Result 2}] Since we have an infinite number of \textit{Hammerstein model} which are able to provide exactly the same I/O behaviour of the true one, our numerical procedure for the computation of the PUI \textbf{is going to fail}. This is due to the fact the FPS will be \textbf{structurally unbounded}.
+\end{description}
+
+From such results we understand that we need an \textbf{additional constraint}, in principle any constraint so that the I/O behaviour is not changed. For example: 
+\begin{enumerate}
+    \itemsep-0.2em
+    \item We can fix the DC-gain of $G(q^{-1})$ to a given value;
+    \item We can fix one of the parameter of $\mathcal{N}$ to a fixed.
+\end{enumerate}
+In general: any normalization of either G or N is fine! The easiest approach that is not leading to any loss of generality is to set the DC-gain of $G(q^{-1})$ to 1. If we impose such a condition we will obtain another constraint:
+\begin{equation}
+    \frac{\beta_0+\beta_1+\beta_2+...+\beta_n}{1+\alpha_1+\alpha_2+...+\alpha_n}=1
+\end{equation}
+This is nothing but a \textbf{linear additional constraint} on the system parameters. 
+
+\section{Extension for non-polynomial $\{\phi\}_j$ basis function}
+At this stage we wonder if the presented SM-ID method for the Hammerstein system can be extended to the case where $\mathcal{N}$ is no more polynomial. The answer is positive provided that $\mathcal{N}$ is polynomially parametrized that is: 
+\begin{equation}
+    \mathcal{N}(\cdot): \ x(k)=\gamma_1{\varphi_1(u(k))}+\gamma_2{\varphi_2(u(k))}+...+\gamma_m{\varphi_m(u(k))}
+\end{equation}
+This is quite useful when either the nonlinearity is \textbf{difficult} to be approximated by polynomials (hard nonlinearity such as \textbf{input saturation}), or the application explicitly suggests a precise choice of $\varphi_1, \ ... \ , \varphi_m$. This last case arises when we have for example a \textbf{dead zone}.
+The following figure from \cite{pupeikis2003identification}: 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1.2]{img/hardNL.jpg}
+    \caption{Examples of hard nonlinearities}
+\end{figure} 
+
+\section{Generalization of SysId of block-structured nonlinear systems using \textit{Linear Fractional Transformation (??)}}
