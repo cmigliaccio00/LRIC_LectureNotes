@@ -1,4 +1,4 @@
-\chapter[SM-ID of block structured nonlinear systems]{Set-membership identification of block structured nonlinear systems}
+\chapter[SM-ID of block structured nonlinear systems]{Set-membership identification of  nonlinear systems}
 
 \section{Introduction}
 Let us continue to generalize our Set-Membership identification framework introducing the theoretical concepts useful to identify \textbf{SISO nonlinear systems} in the regression form we have seen in the very first part of these notes:
@@ -199,7 +199,7 @@ As usual at this stage, when we want to formulate the problem of SysId we havo t
 
 \noindent
 Putting all together we can retrieve the    \textbf{Feasible parameter Set} where the parameters are $\theta=[\alpha_1 \dots \alpha_n \ \beta_0 \dots \beta_n \ \gamma_1 \dots \gamma_m]$\footnote{
-    We can also split them into two parts: $\gamma$ that are the ones related to $\mathcal{N}$ and $\theta$ which are the ones related to $\mathcal{L}$.
+    We can also split them into two parts: $\gamma$ that are the ones related to $\mathcal{N}$ and $\theta$ which are the ones related to $\mathcal{L}$. In the following we will use this approach.
 }: 
 \begin{equation}
     \begin{aligned}
@@ -320,7 +320,7 @@ In general: any normalization of either G or N is fine! The easiest approach tha
 \begin{equation}
     \frac{\beta_0+\beta_1+\beta_2+...+\beta_n}{1+\alpha_1+\alpha_2+...+\alpha_n}=1
 \end{equation}
-This is nothing but a \textbf{linear additional constraint} on the system parameters. 
+This is nothing but a \textbf{linear additional constraint} on the system parameters. The additive condition can be also a different one, for example that one of the $\gamma_i$ coefficients is fixed. For example $\gamma_1=1$.
 
 \section{Extension for non-polynomial $\{\phi\}_j$ basis function}
 At this stage we wonder if the presented SM-ID method for the Hammerstein system can be extended to the case where $\mathcal{N}$ is no more polynomial. The answer is positive provided that $\mathcal{N}$ is polynomially parametrized that is: 
@@ -331,8 +331,207 @@ This is quite useful when either the nonlinearity is \textbf{difficult} to be ap
 The following figure from \cite{pupeikis2003identification}: 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=1.2]{img/hardNL.jpg}
-    \caption{Examples of hard nonlinearities}
+    \includegraphics[scale=1.4]{img/hardNL.jpg}
+    \caption{Examples of hard nonlinearities: (a)Saturation, (b)Dead zone, (c) Preload, (d)Hysteresis}
 \end{figure} 
 
-\section{Generalization of SysId of block-structured nonlinear systems using \textit{Linear Fractional Transformation (??)}}
+%\section{SM Identificationo of a Wiener system}
+
+%\section{SM Identification of a Lur'e system}
+
+\section{SM Identification of LFT Block-structured nonlinear systems}
+We have introduced some basic block-structured nonlinear systems configuration such as \textit{Hammerstein}, \textit{Wiener} and \textit{Lur'e}, however in real-world applications, frequently more complex structures can appear. \\
+In recent years a \textbf{more general structure} based on a block-structured linear system in linear fractional transformation form (LFT) has been used. This is characterized by the \textit{feedback interconnection} of a \textit{multivariable linear system} $\mathcal{L}$ and a \textit{static multivariable nonlinear map} $\mathcal{N}$. This way of formulating the problem remains rather rich including also NARX models. In this section we call such a description \textbf{General Block-structured configuration (GBSC)}. For sake of generality we assume that both input and output of such a system are corrupted by Unknown but bounded (UBB) measurement noise. The main reference for this section is the article \textit{\citetitle{cerone2021unified}}  (\citeauthor{cerone2021unified} \cite{cerone2021unified}).
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{img/LFT.png}
+    \caption{General block-structured configuration (GBSC)}
+    \label{fig: GBSC}
+\end{figure}
+
+Let us analyze more in details the structure of $\mathcal{L}$ and $\mathcal{N}$ in order to better understand the generality gained by using such a LFT configuration.\\
+
+\noindent
+\subsection{Multivariable linear block $\mathcal{L}$}
+$\mathcal{L}$ is a multivariable linear synamic system described by a MIMO transfer matrix mapping the noiseless inputs $u_k\in\mathbb{R}^{n_u}$ and $w_k\in\mathbb{R}^{n_w}$ into the outputs $y_k\in\mathbb{R}^{n_y}$ and $z_k\in\mathbb{R}^{n_z}$. For simplicity and clarity we denote the generic sample $u(k)$ with $u_k$. Then, we can write:
+
+\begin{equation}
+    \begin{bmatrix}
+        y_k\\z_k
+    \end{bmatrix}=\mathcal{L}\begin{bmatrix}
+        u_k\\w_k
+    \end{bmatrix}=\begin{bmatrix}
+        \mathcal{L}_{yu}&\mathcal{L}_{yw}\\
+        \mathcal{L}_{zu}&\mathcal{L}_{zw}
+    \end{bmatrix}\begin{bmatrix}
+        u_k\\w_k
+    \end{bmatrix}
+\end{equation}
+\noindent
+where the terms  $\mathcal{L}_{yu}$, $\mathcal{L}_{yw}$
+$\mathcal{L}_{zu}$, $\mathcal{L}_{zw}$ are submatrices of suitable dimensions. The generic $(i,j)$-th block of the block $\mathcal{L}$ is -- as you can imagine -- a SISO transfer function of the form: 
+\begin{equation}
+    \mathcal{L}^{(i,j)}=G^{(i,j)}(q^{-1})=
+    \frac{
+        \sum_m^{n_b^{(i,j)}}{b_m^{(i,j)}q^{-m}}
+    }
+    {
+        1+\sum_{k=1}^{n_a^{(i,j)}}{
+            a_k^{(i,j)}q^{-k}
+        }
+    }
+\end{equation}
+the dynamical order $n_b^{(i,j)}$ and $n_a^{(i,j)}$ are assumed to be known.
+
+\subsection{Static map $\mathcal{N}$}
+The nonlinear block $\mathcal{N}$ is an \textbf{array of nonlinear static functions} where the generic $i$-th entry is defined as:
+\begin{align}
+    &w_t^{(i)}=f^{(i)}(z_k), \quad i=1,...,n_w\\
+    &f^{(i)}(z_k)=\sum_{k=1}^{n_{\varphi}^{(i)}}{
+        \varphi_k^{(i)} \varPhi_k^i(z_k)
+    }
+\end{align}
+where $\varPhi_k^i:\mathbb{R}^{n_z}\to\mathbb{R}$ are known \textbf{multivariate polynomial basis functions} in the variable $z$. How we mentioned in the introduction both inputs $u_k$ and output $y_k$ are affected by bounded noise while the inner variables $z_k$ and $w_k$ are not measurable. Formally:
+\begin{align}
+    &\hat{u_k}=u_k+\zeta_k \quad \hat{y_k}=y_k+\eta_k \\
+    &\vert \zeta_k \vert \le \Delta_\zeta \quad 
+    \vert \eta_k \vert \le \Delta_\eta
+\end{align}
+
+\section{SM Identification setting}
+Our objective is the estimation of the \textbf{parameter vector} $\theta$ that in our context is done by two subvectors $\theta_{\mathcal{L}}$ and $\theta_{\mathcal{N}}$ related to -- respectively -- the linear and nonlinear part of the LFT block. Then, in formulas:
+\begin{align}
+    &\theta=[\theta_{\mathcal{L}}, \theta_{\mathcal{N}}]^T
+    \quad \theta_{\mathcal{L}}\in\mathbb{R}^{p_l} \quad 
+    \theta_{\mathcal{N}}\in\mathbb{R}^{p_n}\\
+    &\theta_{\mathcal{L}}=[\theta_{\mathcal{L}}^{(1,1)},...,\theta_{\mathcal{L}}^{(1,n_u+n_w)},...,\theta_{\mathcal{L}}^{(n_y+n_z,1)},...,\theta_{\mathcal{L}}^{(n_y+n_z,n_u+n_w)}]^T\\
+    &\theta_{\mathcal{L}}^{(i,j)} = [
+        a_1^{(1,1)},...,a_{n_a^{(i,j)}}^{(i,j)}, b_0^{(i,j)},...,b_{n_b^{(i,j)}}^{(i,j)}]^T\\
+    &\theta_{\mathcal{N}}=[
+        \theta_{\mathcal{N}}^{(1)},...,
+        \theta_{\mathcal{N}}^{(n_w)}
+    ]^T, \quad \theta_{\mathcal{N}}^i=[
+        \varphi_1^{(i)},...,\varphi_{n_\varphi^{(i)}}^{(i)}
+    ]^T
+\end{align}
+where $p=p_{n}+p_{l}$ is the number of parameters to be estimated.
+
+As we discussed in the case of \textit{Hammerstein system}, also the LFT-GBSC is non-identifiable. For a complete proof of this fact see \cite{cerone2021unified}. We can force again, without loss of generality that the DC-gain of each single SISO transfer function of the $\mathcal{L}$ block is equal to one, that is:
+\begin{equation}
+    \frac{
+        \sum_m^{n_b^{(i,j)}}{b_m^{(i,j)}}
+    }
+    {
+        1+\sum_{k=1}^{n_a^{(i,j)}}{
+            a_k^{(i,j)}
+        }
+    }=1 \quad \forall (i,j)
+\end{equation}
+
+We can write now the expression of the \textbf{extended feasible parameter set (EFPS)}. In order to make more readable the formulas, we can group in a single vector $r_k$ the inputs and in a single vector $s_k$ the outputs where
+\begin{equation}
+    r_k=[u_k,w_k]^T \in \mathbb{R}^{n_r} \quad 
+    s_k=[y_k,z_k]^T \in \mathbb{R}^{n_s}
+\end{equation}
+As we did in the case of SM-ID of MIMO LTI systems, is useful to introduce \textit{partial outputs} $v_k^{(i,j)}$ and make the assumption that each MIMO system can be written as the superposition of more MISO systems $s_k^{(i)}$. In the following, for clarity we call simply $\mathcal{D}$ the EFPS $\mathcal{D}_{\theta,v^{(i,j)},\eta,\zeta,w,z}$:
+\begin{multicols}{2}
+    \noindent
+    \begin{equation}
+        \begin{aligned}
+            \mathcal{D}=&\big\{
+                (\theta,v^{(i,j)},\eta,\zeta,w,z)\in\mathbb{R}^{p+(n_r+n_s)N}:\\
+                 &v_k^{(i,j)}=\sum_{m=0}^{n_b^{(i,j)}} {
+                    b^{(i,j)} r_{k-m}^{(j)} 
+                } - \sum_{h=1}^{n_a^{(i,j)}} {
+                    a^{(i,j)} v_{k-h}^{(i,j)} }\\
+                &s_k^{(i)}=\sum_{h=1}^{n_r}{v_h^{(i,h)}},
+                w_t^{(l)}=\sum_{h=1}^{n_{\varphi}^{(l)}}{
+                    \varphi_k^{(l)} \varPhi_k^l(z_k)}\\
+                &\hat{y}_k^{(o)}=y_k^{(o)}+\eta_k, \quad 
+                \Vert \eta \Vert \le \Delta_\eta\\
+                &\hat{u}_k^{(i)}=u_k^{(i)}+\zeta_k, \quad 
+                \Vert \zeta \Vert \le \Delta_\zeta\\
+                &k=1,...,N, \ i=1,...,n_s, \ j=1,...,n_s \\
+                &l=1,...,n_w, \ o=1,...,n_y, \ i=1,...,n_u
+            \big\}
+        \end{aligned}
+    \end{equation}
+    
+    As you know, in the SM framework you define the Parameter Uncertainty Interval of the generic parameter $\theta_k$ of $\theta$ as:
+    \begin{equation*}
+        PUI_k=[\underline{\theta}_k, \overline{\theta}_k], \ i=1,...,p
+    \end{equation*} where the extrema are: 
+    \begin{align}
+        \underline{\theta}_k = \min_{(\theta,v^{(i,j)},\eta,\zeta,w,z)\in\mathcal{D}} \theta_k= \min_{\theta\in\mathcal{D}} \theta_k  \\
+        \overline{\theta}_k = \max_{(\theta,v^{(i,j)},\eta,\zeta,w,z)\in\mathcal{D}} \theta_k= \max_{\theta\in\mathcal{D}} \theta_k 
+    \end{align}
+    
+\end{multicols}
+
+In general the functional $J(\theta)$ of the optimization problem could be also something different\footnote{
+    In order to enforce \textit{Sparse SM Identification} you can choose for example $J(\theta)=\Vert \theta \Vert_1$. In fact it is known in literature that the minimization of the $\ell_1$-norm promotes \underline{sparse solution} of the identification problem. This approach is useful when $n_b^{(i,j)}$, $n_a^{(i,j)}$ and $n_\varphi^{(i)}$ are not known. The choice of an $l_1$-norm objective function force the solution to be of reduced complexity. 
+}. Focusing on the case we have presented the optimization problems to be solved become:
+
+\begin{multicols}{2}
+    \noindent
+    \begin{equation}\begin{aligned}
+            &\underline{\theta}_k = \min_{\theta,v^{(i,j)},\eta,\zeta,w,z} \theta_k \\
+            &\text{subject to:}\\
+            &\begin{cases}
+                v_k^{(i,j)}=\sum_{m=0}^{n_b^{(i,j)}} {
+                b^{(i,j)} r_{k-m}^{(j)} 
+            } - \sum_{h=1}^{n_a^{(i,j)}} {
+                a^{(i,j)} v_{k-h}^{(i,j)} }\\
+            s_k^{(i)}=\sum_{h=1}^{n_r}{v_h^{(i,h)}} \\
+            w_t^{(l)}=\sum_{h=1}^{n_{\varphi}^{(l)}}{
+                \varphi_k^{(l)} \varPhi_k^l(z_k)}\\
+            \hat{y}_k^{(o)}=y_k^{(o)}+\eta_k, \quad 
+            \Vert \eta \Vert \le \Delta_\eta\\
+            \hat{u}_k^{(i)}=u_k^{(i)}+\zeta_k, \quad 
+            \Vert \zeta \Vert \le \Delta_\zeta\\
+            k=1,...,N, \ i=1,...,n_s, \ j=1,...,n_s \\
+            l=1,...,n_w, \ o=1,...,n_y, \ i=1,...,n_u
+            \end{cases}
+        \end{aligned}
+    \end{equation}
+    \begin{equation}
+        \begin{aligned}
+            &\overline{\theta}_k = \max_{\theta,v^{(i,j)},\eta,\zeta,w,z} \theta_k \\
+            &\text{subject to:}\\
+            &\begin{cases}
+                v_k^{(i,j)}=\sum_{m=0}^{n_b^{(i,j)}} {
+                b^{(i,j)} r_{k-m}^{(j)} 
+            } - \sum_{h=1}^{n_a^{(i,j)}} {
+                a^{(i,j)} v_{k-h}^{(i,j)} }\\
+            s_k^{(i)}=\sum_{h=1}^{n_r}{v_h^{(i,h)}} \\
+            w_t^{(l)}=\sum_{h=1}^{n_{\varphi}^{(l)}}{
+                \varphi_k^{(l)} \varPhi_k^l(z_k)}\\
+            \hat{y}_k^{(o)}=y_k^{(o)}+\eta_k, \quad 
+            \Vert \eta \Vert \le \Delta_\eta\\
+            \hat{u}_k^{(i)}=u_k^{(i)}+\zeta_k, \quad 
+            \Vert \zeta \Vert \le \Delta_\zeta\\
+            k=1,...,N, \ i=1,...,n_s, \ j=1,...,n_s \\
+            l=1,...,n_w, \ o=1,...,n_y, \ i=1,...,n_u
+            \end{cases}
+        \end{aligned}
+    \end{equation}
+\end{multicols}
+What about the solution of the problems we have just presented? It is not a surprise the fact that they are hardly non-convex, gradient based algorithms fail in computing a global minimum. In \cite{cerone2021unified}, \citeauthor*{cerone2021unified} demonstrate that the \textit{Lassere's Moment theory} and \textit{convex LMI-based relaxation techniques} can be used, and the running intersection property can be used if we are able to obtain bilinear constraints for the EFPS.\\
+Hammerstein, Lur'e and Wiener systems can be included in the GBSC, the same holds SISO and MIMO LTI systems and even more interesting, \textit{general polynomial nonlinear systems in regression form are special cases of GBSC}.
+
+\section*{References}
+\begin{itemize}
+    \itemsep-0.3em
+    \item[\Large{\ding{45}}] \Citeauthor{cerone2012bounded}, \textit{\citetitle{cerone2012bounded}}, \citedate{cerone2012bounded}
+    \item[\Large{\ding{45}}] \citeauthor{cerone2013bounding} \textit{\citetitle{cerone2013bounding}}, \citedate{cerone2013bounding}
+    \item[\Large{\ding{45}}] \citeauthor{cerone2012computational} \textit{\citetitle{cerone2012computational}}, \citedate{cerone2012computational}
+    \item[\Large{\ding{45}}]  \citeauthor{cerone2021unified} \textit{\citetitle{cerone2021unified}}, \citedate{cerone2021unified}
+    \item[\Large{\ding{45}}] \citeauthor{cerone2006parameter} \textit{\citetitle{cerone2006parameter}}, \citedate{cerone2006parameter}
+\end{itemize}
+
+
+
+
+
+
