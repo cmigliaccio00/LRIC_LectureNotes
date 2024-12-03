@@ -146,7 +146,8 @@ This structure is characterized by the following features:
 \end{figure}
 
 \subsection{Wiener system}
-The \textbf{Wiener system} has the nonlinear part $\mathcal{N}$ toward the output. $\mathcal{N}$ is a \textit{linear static map} from the output of the linear system to the output of the nonlinear block.
+The \textbf{Wiener system} has the nonlinear part $\mathcal{N}$ toward the output. $\mathcal{N}$ is a \textit{linear static map} from the output of the linear system to the output of the nonlinear block. Practical examples of such a system are: (i) electrical circuits with nonlinear components (e.g., diodes, transistors), (ii) mechanical systems with nonlinear friction or backlash.
+Biological systems where feedback mechanisms include saturation effects.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.2]{img/Wiener.jpg}
@@ -155,7 +156,19 @@ The \textbf{Wiener system} has the nonlinear part $\mathcal{N}$ toward the outpu
 \begin{remark}[\textbf{Features of the Wiener system}]
     (i) the $x(k)$ signal cannot be measured; (ii) such a type of system is useful to describe systems which are essentially LTI but with a significant \textbf{ouput nonlinearity}.
 \end{remark}
-When dealing with \textbf{block-structured} systems, we assume that the nonlinear static subsystems can be described by means of polynomial functions, so that all the unmeasurable inner signal will be considered as optimization variables in the SysId problem. 
+
+\subsection{Lur'e system}
+\textbf{Lur'e system} is a type of block-oriented nonlinear system where the nonlinear static map is in the feedback. Real-wolrd examples in which such systems can occur are: (i) electrical circuits with nonlinear components (e.g., diodes, transistors). (ii) mechanical systems with nonlinear friction or backlash. (ii) biological systems where feedback mechanisms include saturation effects. Parameters bound estimation for the linear and nonlinear blocks are treated in \citeauthor{cerone2013bounding}, \citetitle{cerone2013bounding} (\citedate{cerone2013bounding}). \\
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.15]{img/lure.jpg}
+    \caption{Lur'e system}
+\end{figure} 
+
+\textsf{
+When dealing with \textbf{block-structured} systems, we assume that the nonlinear static subsystems can be described by means of polynomial functions, so that all the unmeasurable inner signal will be considered as optimization variables in the SysId problem. }
+
 \section{SM-ID of an Hammerstein system}
 \subsection{
     More details on the blocks
@@ -263,8 +276,8 @@ Here we are not going to replace the $x(k)$ samples, we consider them as optimiz
     \begin{aligned}
         \mathcal{D}_{\theta,\gamma,x,\eta} = \big\{&
             \theta\in\mathbb{R}^{2n+1}, \gamma\in\mathbb{R}^m, x\in\mathbb{R}^N, \eta\in\mathbb{R}^N:\\
-            &y(k)=-\alpha_1{y(k-1)+...+\beta_n{x(k-n)}} \quad \forall{k=n+1,...,n}\\
-            & x(k)=\gamma_1{u(k)}+\gamma_2{u^2(k)}+...+\gamma_m{u^{m}(k)} \ k=1,...,n \\
+            &y(k)=-\alpha_1{y(k-1)+...+\beta_n{x(k-n)}} \quad \forall{k=n+1,...,N}\\
+            & x(k)=\gamma_1{u(k)}+\gamma_2{u^2(k)}+...+\gamma_m{u^{m}(k)} \ k=1,...,N \\
             &\tilde{y}(k)=y(k)+\eta(k), \quad 
             \vert \eta(k) \vert \le \Delta_\eta \quad k=1,..., N
         \big\}
@@ -328,22 +341,42 @@ At this stage we wonder if the presented SM-ID method for the Hammerstein system
     \mathcal{N}(\cdot): \ x(k)=\gamma_1{\varphi_1(u(k))}+\gamma_2{\varphi_2(u(k))}+...+\gamma_m{\varphi_m(u(k))}
 \end{equation}
 This is quite useful when either the nonlinearity is \textbf{difficult} to be approximated by polynomials (hard nonlinearity such as \textbf{input saturation}), or the application explicitly suggests a precise choice of $\varphi_1, \ ... \ , \varphi_m$. This last case arises when we have for example a \textbf{dead zone}.
-The following figure from \cite{pupeikis2003identification}: 
+The following figure is taken from \cite{pupeikis2003identification}: 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=1.4]{img/hardNL.jpg}
+    \includegraphics[scale=1.2]{img/hardNL.jpg}
     \caption{Examples of hard nonlinearities: (a)Saturation, (b)Dead zone, (c) Preload, (d)Hysteresis}
 \end{figure} 
 
-%\section{SM Identificationo of a Wiener system}
+\section{SM-ID of a Wiener and Lur'e system}
+\subsection{Wiener SysId}
+The SM-ID procedure for the \textit{Wiener system} is practically speaking the same with respect to the one we have seen for the \textit{Hammerstein system} including the discussion about the Identifiability. What changes is the way the nonlinearity enters into the block-oriented system: indeed, here the nonlinear block is in the output of the system, then after the linear block $\mathcal{L}$.
 
+\subsection{Lur'e SysId}
+As far as the identification of the \textit{Lur'e system} is concerned, there is a more tricky three-stage to follow. The main reference is \Citeauthor*{cerone2013bounding} \cite{cerone2013bounding}. Just for mention, we say that such a procedure is done by the following steps:
+\begin{enumerate}
+    \itemsep-0.2em
+    \item Estimation of the parameter $\gamma_i$ of the nonlinear static map $\mathcal{N}$ while the linear part is at steady state;
+    \item Estimation of a bound for the inner unmeasurable variable $z$ and $\nu$; 
+    \item Using the obtained information, and assuming that the output of the system is affected by noise $\eta$, we estimate bounds on the parameters of the linear model $\mathcal{L}$ using an \textit{Error-in-variables} (EIV) approach.
+\end{enumerate}
+Moreover, equivalently than the other cases, also here a condition on the DC gain of $\mathcal{L}$ is needed in order to make the Lur'e system identifiable. The experimental settings to employ in the case of SM-ID for Wiener and Lur'e model is reported in the \Cref{fig:others}.
+
+\begin{figure}[h]
+    \centering
+    \subfigure[\textsf{Wiener OE}]{\includegraphics[scale=0.145]{img/wiener_oe.jpg}}\quad 
+    \subfigure[\textsf{Lur'e OE}]{\includegraphics[scale=0.145]{img/lure_oe.jpg}}
+    \caption{Wiener and Lur'e systems' experimental settings}
+    \label{fig:others}
+\end{figure}
+ 
 %\section{SM Identification of a Lur'e system}
 
 \section{SM Identification of LFT Block-structured nonlinear systems}
 We have introduced some basic block-structured nonlinear systems configuration such as \textit{Hammerstein}, \textit{Wiener} and \textit{Lur'e}, however in real-world applications, frequently more complex structures can appear. \\
 In recent years a \textbf{more general structure} based on a block-structured linear system in linear fractional transformation form (LFT) has been used. This is characterized by the \textit{feedback interconnection} of a \textit{multivariable linear system} $\mathcal{L}$ and a \textit{static multivariable nonlinear map} $\mathcal{N}$. This way of formulating the problem remains rather rich including also NARX models. In this section we call such a description \textbf{General Block-structured configuration (GBSC)}. For sake of generality we assume that both input and output of such a system are corrupted by Unknown but bounded (UBB) measurement noise. The main reference for this section is the article \textit{\citetitle{cerone2021unified}}  (\citeauthor{cerone2021unified} \cite{cerone2021unified}).
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.7]{img/LFT.png}
     \caption{General block-structured configuration (GBSC)}
