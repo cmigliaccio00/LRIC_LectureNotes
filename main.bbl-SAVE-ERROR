@@ -19,6 +19,206 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{cerone2012bounded}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automatica}
+      \field{number}{10}
+      \field{title}{Bounded error identification of Hammerstein systems through sparse polynomial optimization}
+      \field{volume}{48}
+      \field{year}{2012}
+      \field{pages}{2693\bibrangedash 2698}
+      \range{pages}{6}
+    \endentry
+    \entry{cerone2013bounding}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Robust and Nonlinear Control}
+      \field{number}{1}
+      \field{title}{Bounding the parameters of block-structured nonlinear feedback systems}
+      \field{volume}{23}
+      \field{year}{2013}
+      \field{pages}{33\bibrangedash 47}
+      \range{pages}{15}
+    \endentry
+    \entry{cerone2012computational}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Automatic Control}
+      \field{number}{5}
+      \field{title}{Computational load reduction in bounded error identification of Hammerstein systems}
+      \field{volume}{58}
+      \field{year}{2012}
+      \field{pages}{1317\bibrangedash 1322}
+      \range{pages}{6}
+    \endentry
+    \entry{cerone2011improved}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{4}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Adaptive Control and Signal Processing}
+      \field{number}{3}
+      \field{title}{Improved parameter bounds for set-membership EIV problems}
+      \field{volume}{25}
+      \field{year}{2011}
+      \field{pages}{208\bibrangedash 227}
+      \range{pages}{20}
+    \endentry
+    \entry{cerone2011set}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Automatic Control}
+      \field{number}{2}
+      \field{title}{Set-membership error-in-variables identification through convex relaxation techniques}
+      \field{volume}{57}
+      \field{year}{2011}
+      \field{pages}{517\bibrangedash 522}
+      \range{pages}{6}
+    \endentry
     \entry{cerone2021unified}{article}{}
       \name{author}{3}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -46,6 +246,7 @@
       \strng{authorbibnamehash}{2da49e49887f741d9e6ead308814edb6}
       \strng{authornamehash}{2da49e49887f741d9e6ead308814edb6}
       \strng{authorfullhash}{2da49e49887f741d9e6ead308814edb6}
+      \field{extraname}{1}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
@@ -57,6 +258,223 @@
       \field{year}{2021}
       \field{pages}{7344\bibrangedash 7360}
       \range{pages}{17}
+    \endentry
+    \entry{cerone2018set}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=066eff54a5a3e6fb7299064cfb28a915}{%
+           family={Razza},
+           familyi={R\bibinitperiod},
+           given={Valentino},
+           giveni={V\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{2da49e49887f741d9e6ead308814edb6}
+      \strng{fullhash}{2da49e49887f741d9e6ead308814edb6}
+      \strng{bibnamehash}{2da49e49887f741d9e6ead308814edb6}
+      \strng{authorbibnamehash}{2da49e49887f741d9e6ead308814edb6}
+      \strng{authornamehash}{2da49e49887f741d9e6ead308814edb6}
+      \strng{authorfullhash}{2da49e49887f741d9e6ead308814edb6}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automatica}
+      \field{title}{Set-membership errors-in-variables identification of MIMO linear systems}
+      \field{volume}{90}
+      \field{year}{2018}
+      \field{pages}{25\bibrangedash 37}
+      \range{pages}{13}
+    \endentry
+    \entry{cerone2006parameter}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{b3268fb06163daf93b9499f9335492ae}
+      \strng{fullhash}{b3268fb06163daf93b9499f9335492ae}
+      \strng{bibnamehash}{b3268fb06163daf93b9499f9335492ae}
+      \strng{authorbibnamehash}{b3268fb06163daf93b9499f9335492ae}
+      \strng{authornamehash}{b3268fb06163daf93b9499f9335492ae}
+      \strng{authorfullhash}{b3268fb06163daf93b9499f9335492ae}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automatica}
+      \field{number}{10}
+      \field{title}{Parameter bounds evaluation of Wiener models with noninvertible polynomial nonlinearities}
+      \field{volume}{42}
+      \field{year}{2006}
+      \field{pages}{1775\bibrangedash 1781}
+      \range{pages}{7}
+    \endentry
+    \entry{cerone2022set}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=76bb13265dbb730a1b71ad0a4e764b34}{%
+           family={Fosson},
+           familyi={F\bibinitperiod},
+           given={Sophie\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c9c19fd74956ebf1680c950b18e37db0}{%
+           family={Pirrera},
+           familyi={P\bibinitperiod},
+           given={Simone},
+           giveni={S\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{fullhash}{395ea5a823fd59d75144ffe7f18d0fa6}
+      \strng{bibnamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authorbibnamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authornamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authorfullhash}{395ea5a823fd59d75144ffe7f18d0fa6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2022 IEEE 61st Conference on Decision and Control (CDC)}
+      \field{title}{Set-membership identification of continuous-time systems through model transformation}
+      \field{year}{2022}
+      \field{pages}{868\bibrangedash 873}
+      \range{pages}{6}
+    \endentry
+    \entry{johansson1994identification}{article}{}
+      \name{author}{1}{}{%
+        {{hash=148e499ff14924472208522a20805512}{%
+           family={Johansson},
+           familyi={J\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{148e499ff14924472208522a20805512}
+      \strng{fullhash}{148e499ff14924472208522a20805512}
+      \strng{bibnamehash}{148e499ff14924472208522a20805512}
+      \strng{authorbibnamehash}{148e499ff14924472208522a20805512}
+      \strng{authornamehash}{148e499ff14924472208522a20805512}
+      \strng{authorfullhash}{148e499ff14924472208522a20805512}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Signal Processing}
+      \field{number}{4}
+      \field{title}{Identification of continuous-time models}
+      \field{volume}{42}
+      \field{year}{1994}
+      \field{pages}{887\bibrangedash 897}
+      \range{pages}{11}
+    \endentry
+    \entry{milanese1982estimation}{article}{}
+      \name{author}{2}{}{%
+        {{hash=62a5199c9f77c068dd3a81674b7db15b}{%
+           family={Milanese},
+           familyi={M\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cf30eee62e882d1c0fc4027d7e23d556}{%
+           family={Belforte},
+           familyi={B\bibinitperiod},
+           given={Gustavo},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{ae70e770c89b6ae587572722f2ead1c2}
+      \strng{fullhash}{ae70e770c89b6ae587572722f2ead1c2}
+      \strng{bibnamehash}{ae70e770c89b6ae587572722f2ead1c2}
+      \strng{authorbibnamehash}{ae70e770c89b6ae587572722f2ead1c2}
+      \strng{authornamehash}{ae70e770c89b6ae587572722f2ead1c2}
+      \strng{authorfullhash}{ae70e770c89b6ae587572722f2ead1c2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on automatic control}
+      \field{number}{2}
+      \field{title}{Estimation theory and uncertainty intervals evaluation in presence of unknown but bounded errors: Linear families of models and estimators}
+      \field{volume}{27}
+      \field{year}{1982}
+      \field{pages}{408\bibrangedash 414}
+      \range{pages}{7}
+    \endentry
+    \entry{milanese2013bounding}{book}{}
+      \name{author}{4}{}{%
+        {{hash=62a5199c9f77c068dd3a81674b7db15b}{%
+           family={Milanese},
+           familyi={M\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a36ceb020dd1e3e761f06a5c8bdbc7bc}{%
+           family={Norton},
+           familyi={N\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fb9ae75604e524a4a4b67b2e8e9d1274}{%
+           family={Piet-Lahanier},
+           familyi={P\bibinithyphendelim L\bibinitperiod},
+           given={Hélène},
+           giveni={H\bibinitperiod}}}%
+        {{hash=07e9841ddef78871fd192ad59a7f705d}{%
+           family={Walter},
+           familyi={W\bibinitperiod},
+           given={Éric},
+           giveni={É\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{5059fc6e5c03abf61bb15f7209385532}
+      \strng{fullhash}{ba1c4b0041bf7c3a011a89606e50bb4e}
+      \strng{bibnamehash}{5059fc6e5c03abf61bb15f7209385532}
+      \strng{authorbibnamehash}{5059fc6e5c03abf61bb15f7209385532}
+      \strng{authornamehash}{5059fc6e5c03abf61bb15f7209385532}
+      \strng{authorfullhash}{ba1c4b0041bf7c3a011a89606e50bb4e}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bounding approaches to system identification}
+      \field{year}{2013}
     \endentry
     \entry{pupeikis2003identification}{book}{}
       \name{author}{3}{}{%

@@ -332,6 +332,77 @@
       \field{pages}{1775\bibrangedash 1781}
       \range{pages}{7}
     \endentry
+    \entry{cerone2022set}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=76bb13265dbb730a1b71ad0a4e764b34}{%
+           family={Fosson},
+           familyi={F\bibinitperiod},
+           given={Sophie\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c9c19fd74956ebf1680c950b18e37db0}{%
+           family={Pirrera},
+           familyi={P\bibinitperiod},
+           given={Simone},
+           giveni={S\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{fullhash}{395ea5a823fd59d75144ffe7f18d0fa6}
+      \strng{bibnamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authorbibnamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authornamehash}{52742ff47759eac6562d03ab2ae66c9d}
+      \strng{authorfullhash}{395ea5a823fd59d75144ffe7f18d0fa6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2022 IEEE 61st Conference on Decision and Control (CDC)}
+      \field{title}{Set-membership identification of continuous-time systems through model transformation}
+      \field{year}{2022}
+      \field{pages}{868\bibrangedash 873}
+      \range{pages}{6}
+    \endentry
+    \entry{johansson1994identification}{article}{}
+      \name{author}{1}{}{%
+        {{hash=148e499ff14924472208522a20805512}{%
+           family={Johansson},
+           familyi={J\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{148e499ff14924472208522a20805512}
+      \strng{fullhash}{148e499ff14924472208522a20805512}
+      \strng{bibnamehash}{148e499ff14924472208522a20805512}
+      \strng{authorbibnamehash}{148e499ff14924472208522a20805512}
+      \strng{authornamehash}{148e499ff14924472208522a20805512}
+      \strng{authorfullhash}{148e499ff14924472208522a20805512}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Signal Processing}
+      \field{number}{4}
+      \field{title}{Identification of continuous-time models}
+      \field{volume}{42}
+      \field{year}{1994}
+      \field{pages}{887\bibrangedash 897}
+      \range{pages}{11}
+    \endentry
     \entry{milanese1982estimation}{article}{}
       \name{author}{2}{}{%
         {{hash=62a5199c9f77c068dd3a81674b7db15b}{%
