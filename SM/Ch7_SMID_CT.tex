@@ -1,4 +1,4 @@
-\chapter{Set-Membership identification of continuous time systems}
+\chapter[SM-ID of Continuous time systems]{Set-Membership identification of continuous time systems}
 
 \begin{quotation}
     \noindent
@@ -320,18 +320,20 @@ The problem of computing the PUI on $\alpha, \beta$ is a POP of degree 2 (can be
 \end{equation}
 
 \begin{remark}
-    If we assume that $\Delta_\delta=0$ and we use \textbf{noise free} data, then the problem of finding the PUIs is \textbf{infeasible}; 
+    If we assume that $\Delta_\delta=0$ and we use \textbf{noise free} data, then the problem of finding the PUIs is \textbf{infeasible}, since even if we are using data not being corrupted by noise we are assuming that there is bounded noise on both input and output. Moreover we are saying that we are in the ideal condition in which between one point and the other there is a \textbf{straigth line}.
 \end{remark}
 
 \begin{remark}
     Notice that the bound on the discretizationn error, must be provided as an \textit{a-priori assumption}, however it depends on $T_s$ and $u(t)$.
 \end{remark}
 
+From these two remarks we can say that the information $\Delta_\delta$ cannot be neglected otherwise we have infeasibility. So a common way to go beyond such a problem is to find \textbf{the minimal value for $\Delta_\delta$ such that the problem has at least a solution}. We have to solve an optimization problem over the same feasible parameter set, with the only difference that the bound on the discretization error is an optimization variable.
+
 \subsection{Estimating $\Delta_\delta$ from data}
 There is the possibility to estimate the bound $\Delta_\delta$ on the discretization error, however there is no guarantee that we are not adding conservativeness. Anyway the way of proceeding is the following:
 \begin{equation}
     \begin{aligned}
-        \Delta_\delta^*&=\min_{(\theta,\zeta,\gamma,\epsilon,\eta')\in\mathcal{D}_{\theta,\zeta,\gamma,\epsilon,\eta'}} \Delta_\delta\\
+        \Delta_\delta^*&=\min_{(\Delta_\delta,\theta,\zeta,\gamma,\epsilon,\eta')\in\mathcal{D}_{\Delta_\delta,\theta,\zeta,\gamma,\epsilon,\eta'}} \Delta_\delta\\
         &\text{s.t.} \\
         &\tilde{y}(k)=y^d(k)+\eta'(k) \quad 
           \vert \eta'(k) \vert \le \Delta_\eta+\Delta_\delta \quad
