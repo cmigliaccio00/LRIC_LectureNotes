@@ -1,1 +1,150 @@
 \chapter{Enforcing stability for the identified model}
+
+\textsf{Everytime we perform an open-loop experiment we need BIBO stability otherwise the output of the system to be identified may diverge, so that we are not able to measure it. This is a \textbf{strong information} on the parameters of the system itself! Indeed, adding such an information in the problem allow us to get more \textit{accurate estimate}, that is \textbf{smaller parameter uncertainty intervals} in out Set-Membership framework. The main reference for this part is \citeauthor{cerone2011enforcing} \textit{\citetitle{cerone2011enforcing}, \citedate{cerone2011enforcing} \cite{cerone2011enforcing}}}
+
+\section{Review on stability of Discrete Time LTI systems}
+We know that a generic discrete time LTI model can be described by means of a \textit{transfer function} in the z-domain:
+\begin{equation}
+    G_p(z)=\frac{N(z)}{D(z)}
+\end{equation}
+\begin{definition}[\textbf{BIBO Stability}]
+    $G_p(s)$ is said to be BIBO stable if and only if the response of the system is bounded for all the possible bounded input signals.
+\end{definition}
+
+\noindent
+Referred to such a definition there is an important result that states: 
+\begin{quotation}
+    $G_p(z)$ is BIBO stable if and only if the poles of $G_p(s)$ (the roots of $D(z)=0$) have all magnitude less than 1.
+ \end{quotation}
+\noindent
+ It is remarkable that both $N(z)$ and $D(z)$ depends on some parameter $\theta$ to be estimated. In fact:
+ \begin{equation}
+    G_p(z,\theta)=\frac{N(z,\theta)}{D(z,\theta)}
+ \end{equation}
+ Thus, we can define a set on the parameter space which is the set of all the parameter values such that the model $G_p(z,\theta)$ is BIBO stable. Such a set can be expressed as
+ \begin{equation}
+    \mathcal{D}_{\text{stab}}=\{
+        \theta\in\mathbb{R}^{n_\theta} : \ D(z,\theta)\ne{0}, \forall{z}\in\mathbb{C}, \ \vert z \vert \ge 1
+    \}
+ \end{equation}
+Henceforth, we can understand that \textbf{stability depends only on the parameters appearing at the denominator} which in turn are the \textit{poles of the system}. Given the denominator of a transfer function $G_p(z)$ there a  theorem (Jury Theorem) by which we can retrieve \textbf{conditions} on the parameters from which it depends, so that the resulting system (for us the system which has been identified) is BIBO stable. 
+
+
+\section{Jury Theorem}
+The \textbf{Jury Theorem} is based on some conditions which rely on a table that is called the \textbf{Jury array}. Before exposing the theorem we give the construction of such an array. 
+
+\subsection{Construction of the Jury array}
+The denominator of our transfer function is given by: 
+\begin{equation}
+    D(z,\theta)=1+a_1{z^{-1}}+a_2{z^{-2}}+\dots+a_n{z^{-n}}
+\end{equation}
+The following table is the so called \textbf{Jury array}:
+\begin{equation}
+    {\displaystyle {\begin{array}{lcccccc}
+        {\underline {\text{row}}} &\ {\underline {z^{n}}}\ &\ {\underline {z^{n-1}}}\ &\ {\underline {z^{n-2}}}\ &\ \cdots \ &\ {\underline {z^{1}}}\ &\ {\underline {z^{0}}} \\[8pt]
+        1 & a_{n} & a_{n-1} & a_{n-2} & \cdots & a_{1} & 1 \\[4pt]
+        2 & 1 & a_{1} & a_{2} & \cdots & a_{n-1} & a_{n} \\[10pt]
+        3 & c_{n-1} & c_{n-2} & \cdots & c_{1} & c_{0} \\[4pt]
+        4 & c_{0} & c_{1} & \cdots & c_{n-2} & c_{n-1} \\[10pt]
+        5 & d_{n-2} & d_{n-3} & \cdots & d_{0} & \\[4pt]
+        6 & d_{0} & d_{1} & \cdots & d_{n-2} & \\[10pt]
+        \!\vdots & \vdots & \vdots & \vdots & \vdots && \\[10pt]
+        2n-5 & p_{3} & p_{2} & p_{1} & p_{0} && \\[4pt]
+        2n-4 & p_{0} & p_{1} & p_{2} & p_{3} && \\[10pt]
+        2n-3 & q_{2} & q_{1} & q_{0} &&&
+        \end{array}}}
+\end{equation}
+We assume that the polynomial at denominator is \textit{monic} so the leading coefficient $a_0$ is always equal to one. Moreover the terms $c$ and $d$ are defined as: 
+\begin{equation}
+    \begin{aligned}
+        &c_{n-1}=\bigg| \begin{matrix}
+            a_{n}&a_{n-1}\\
+            1&a_{1}
+        \end{matrix}\bigg|,  \quad 
+        c_{n-1}=\bigg| \begin{matrix}
+            a_{n}&a_{n-2}\\
+            1&a_{2}
+        \end{matrix}\bigg|, \quad 
+        c_{n-j}=\bigg| \begin{matrix}
+            a_{n}&a_{n-j}\\
+            1&a_{j}
+        \end{matrix}\bigg|, \quad, \dots, \quad
+        c_{0}=\bigg| \begin{matrix}
+            a_{n}&a_{1}\\
+            1&a_{n}
+        \end{matrix}\bigg|\\
+        &d_{n-2}=\bigg|\begin{matrix}
+            c_{n-1}&c_{n-2}\\
+            c_0&c_2
+        \end{matrix} \bigg|, \quad 
+        d_{n-j}=\bigg|\begin{matrix}
+            c_{n-1}&c_{n-j}\\
+            c_0&c_j
+        \end{matrix} \bigg|, \quad, \dots, \quad
+        d_0=\bigg| \begin{matrix}
+            c_{n-1}&c_0\\
+            c_{0}&c_{n-1} 
+        \end{matrix}\bigg| 
+    \end{aligned}
+\end{equation}
+\begin{theorem}[Jury Theorem]\label{th:Jury_thm}
+The roots of the polynomial $D(z)$ belong to the \textbf{open unit circle} if and only if the following equations hold:
+\begin{enumerate}
+    \itemsep-0.2em
+    \item $D(z=1)=1+a_1+a_2+\dots+a_n>0$
+    \item $(-1)^n D(z=1)=(-1)^n (1-a_1+a_2-a_3+\dots\pm{a_n})>0$
+    \item $\vert a_n \vert \le 1$
+    \item $\vert c_{n-1} \vert < \vert c_0 \vert$, \ $\vert d_{n-2}\vert < \vert d_0 \vert$, $\dots$, $\vert q_2 \vert < \vert q_0 \vert$
+\end{enumerate}
+\end{theorem}
+
+\noindent
+It is more convenient that the last constraints are recasted in $c_{n-1}^2 < c_{0}^2, \dots$, otherwise it is not so easy to handle such constraints. They keep their non-convex shape, but at least they are polynomial. Finally, it is remarkable that all of the elements of the Jury array are \textbf{polynomial functions of $\theta$}.
+
+\section{SM-ID and Jury theorem derived constraints}
+Once we have obtained a strong result on the stability of discrete time systems which are dependent on a certain number of parameters, we can \textbf{enforce stability} of the identified model by: 
+\begin{enumerate}
+    \itemsep-0.2em
+    \item Adding optimization variables representing the entries of the Jury array $c_{n-1}, ..., d_{n-2}, ..., d_0$; 
+    \item Modify the extended feasible parameter set in order to include the relation between $\theta$ and the entries of the Jury array $(a_1,...,a_n \to c_{n-1}, ..., c_0)$; 
+    \item Adding the relations between different entries of the Jury Array $(c_{n-1},...,{c_0} \to d_{n-2}, ..., d_0 ...)$
+    \item Adding the equations (1)-(4) coming from the \textit{Jury Theorem}.
+\end{enumerate}
+
+\begin{remark}
+    Even if we include these constraints there is no guarantee that the identified model is stable because:
+    \begin{enumerate}
+        \itemsep-0.2em
+        \item We relax our POPs to convex SDP, and so since we are computing an outer approximation of the feasible parameter set, we may fall outside the true FPS, and finding a point (in the parameter space) not satisfying all of the constraints.
+        \item Even if we could describe the exact FPS when taking the central estimate, we may fall out of the set.
+    \end{enumerate}
+\end{remark}
+
+\noindent
+Then, \textbf{Why enforcing stability constraints?} They shrink the FPS and ultimately improve the accuracy of the model because the obtained PUI will be tighter.
+
+\section{An applied example}
+Given the discrete time LTI system described by
+\begin{equation}
+    H(z)=\frac{\beta_1{z^{-1}}+\beta_0}{1+a_1{z^{-1}}+a_2{z^{-2}}+a_3{z^{-3}}}
+\end{equation}
+using the Jury theorem give necessary and sufficient conditions for which the given system is BIBO stable. 
+\noindent
+The Jury array for the denominator of the given transfer function is:
+\begin{equation}
+    \begin{matrix}
+        a_3&a_2&a_1&1\\
+        1&a_1&a_2&a_3\\
+        c_2&c_1&c_0
+    \end{matrix}
+\end{equation}
+The necessary and sufficient conditions dictated by the \cref{th:Jury_thm} are:
+\begin{equation}
+    \begin{cases}
+        1+a_1+a_2+a_3>0\\
+        -(1-a_1+a_2-a_3)>0\\
+        \vert a_3 \vert < 1 \iff -1 < a_3 < 1\\
+        \vert c_2 \vert < \vert c_0 \vert \iff c_2^2 < c_0^2
+    \end{cases}
+\end{equation}
+These equations, together with the other describing how the several additive variables and parameters of the system are related, must be embedded into the extended feasible parameter set. Each one of this additive constraints will have its own field of the structure \texttt{ineqPolySys} of \texttt{SparsePOP}.

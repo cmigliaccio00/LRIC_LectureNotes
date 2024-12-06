@@ -139,6 +139,46 @@
       \field{pages}{1317\bibrangedash 1322}
       \range{pages}{6}
     \endentry
+    \entry{cerone2011enforcing}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=305fc22b0a12eecc98874a863170167d}{%
+           family={Piga},
+           familyi={P\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{fullhash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{bibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
+      \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
+      \field{extraname}{4}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automatica}
+      \field{number}{11}
+      \field{title}{Enforcing stability constraints in set-membership identification of linear dynamic systems}
+      \field{volume}{47}
+      \field{year}{2011}
+      \field{pages}{2488\bibrangedash 2494}
+      \range{pages}{7}
+    \endentry
     \entry{cerone2011improved}{article}{}
       \name{author}{3}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -166,7 +206,7 @@
       \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
       \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
       \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
-      \field{extraname}{4}
+      \field{extraname}{5}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
@@ -206,7 +246,7 @@
       \strng{authorbibnamehash}{a6c41618052553b251fba5c9034ab22a}
       \strng{authornamehash}{a6c41618052553b251fba5c9034ab22a}
       \strng{authorfullhash}{a6c41618052553b251fba5c9034ab22a}
-      \field{extraname}{5}
+      \field{extraname}{6}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
