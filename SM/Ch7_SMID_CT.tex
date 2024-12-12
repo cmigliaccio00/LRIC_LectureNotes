@@ -100,7 +100,7 @@ In conclusion, also the idea to estimate the samples of the derivatives must be 
 A possible way for going on about this topic is replacing the derivative operator $s$ with a low-pass filter of the type
 
 \begin{equation}\label{eq:lambdat}
-    \lambda(s)=\frac{1}{1+\lambda\tau}
+    \lambda(s)=\frac{1}{1+s\tau}
 \end{equation}
 Then, we want to estimate instead of $\dot{y}(t)$ and $\dot{u}(t)$ the following quantities based on such a type of \textit{model transformation}: 
 
@@ -116,7 +116,7 @@ By inverting the expression of \Cref{eq:lambdat}, we obtain another expression t
 \end{equation*}
 Now, we obtain
 \begin{align}
-    &\frac{1-\lambda}{\lambda\tau} y(s) + \alpha_0{y(s)}=\beta_1 {\frac{1-\lambda}{\lambda\tau}} u(s) + \beta_0{u(s)}\\
+    &\frac{1-\lambda}{s\tau} y(s) + \alpha_0{y(s)}=\beta_1 {\frac{1-\lambda}{s\tau}} u(s) + \beta_0{u(s)}\\
     &y(s)-\lambda{y(s)}+\alpha_0\lambda\tau{y(s)}=\beta_1{u(s)}-\beta_1{\lambda}u(s)+\beta_0\lambda\tau{u(s)}\\
     &y(s)=(1-\alpha_0\tau)\lambda{y(s)} + \beta_1{u(s)}+(\beta_0\tau-\beta_1)\lambda{u(s)}\label{eq: last_step}
 \end{align}
