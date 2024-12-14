@@ -19,6 +19,49 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{abuabiah2023non}{article}{}
+      \name{author}{4}{}{%
+        {{hash=c7606627b21e5e52b28fe963884773e4}{%
+           family={Abuabiah},
+           familyi={A\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c9c19fd74956ebf1680c950b18e37db0}{%
+           family={Pirrera},
+           familyi={P\bibinitperiod},
+           given={Simone},
+           giveni={S\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{dcb83208bb9d409e29c72fc128260f78}
+      \strng{fullhash}{ad11244a46df10e6c78e246be71a9aa0}
+      \strng{bibnamehash}{dcb83208bb9d409e29c72fc128260f78}
+      \strng{authorbibnamehash}{dcb83208bb9d409e29c72fc128260f78}
+      \strng{authornamehash}{dcb83208bb9d409e29c72fc128260f78}
+      \strng{authorfullhash}{ad11244a46df10e6c78e246be71a9aa0}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{A non-iterative approach to direct data-driven control design of MIMO LTI systems}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{121671\bibrangedash 121687}
+      \range{pages}{17}
+    \endentry
     \entry{cerone2012bounded}{article}{}
       \name{author}{3}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -372,6 +415,43 @@
       \field{pages}{1775\bibrangedash 1781}
       \range{pages}{7}
     \endentry
+    \entry{cerone2017direct}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=756756af258175998de76a02d67fe8ec}{%
+           family={Abuabiah},
+           familyi={A\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{fullhash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{bibnamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authorbibnamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authornamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authorfullhash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 American Control Conference (ACC)}
+      \field{title}{Direct data-driven control design through set-membership errors-in-variables identification techniques}
+      \field{year}{2017}
+      \field{pages}{388\bibrangedash 393}
+      \range{pages}{6}
+    \endentry
     \entry{cerone2022set}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -549,6 +629,45 @@
       \field{labeltitlesource}{title}
       \field{title}{Identification of Wiener systems with hard and discontinuous nonlinearities}
       \field{year}{2003}
+    \endentry
+    \entry{van2011data}{article}{}
+      \name{author}{3}{}{%
+        {{hash=1502b76b65e51a0498ae03ef76226f25}{%
+           family={Van\bibnamedelima Heusden},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Klaske},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5f1a4a1f677685f14572d308e8e3f109}{%
+           family={Karimi},
+           familyi={K\bibinitperiod},
+           given={Alireza},
+           giveni={A\bibinitperiod}}}%
+        {{hash=37fe34bd2379c62fabb0981ebaaf3618}{%
+           family={Bonvin},
+           familyi={B\bibinitperiod},
+           given={Dominique},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{b90130d1048ad5752300c74c8269a0cc}
+      \strng{fullhash}{b90130d1048ad5752300c74c8269a0cc}
+      \strng{bibnamehash}{b90130d1048ad5752300c74c8269a0cc}
+      \strng{authorbibnamehash}{b90130d1048ad5752300c74c8269a0cc}
+      \strng{authornamehash}{b90130d1048ad5752300c74c8269a0cc}
+      \strng{authorfullhash}{b90130d1048ad5752300c74c8269a0cc}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Adaptive Control and Signal Processing}
+      \field{number}{4}
+      \field{title}{Data-driven model reference control with asymptotically guaranteed stability}
+      \field{volume}{25}
+      \field{year}{2011}
+      \field{pages}{331\bibrangedash 351}
+      \range{pages}{21}
     \endentry
   \enddatalist
 \endrefsection
