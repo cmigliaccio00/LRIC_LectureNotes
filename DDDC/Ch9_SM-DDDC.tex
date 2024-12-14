@@ -433,7 +433,8 @@ In the following we are using  $r_k$ instead of $r(k)$ to ease the notation. The
         \sum_{j=0}^{n_F} \sum_{h=0}^{n_\Delta}{\alpha_j^F {\color{red}\delta_h} \ r({k-j-h})} +
         \sum_{j=0}^{n_F} \sum_{h=0}^{n_\Delta}{\beta_j^F {\color{red}\delta_h} \ \eta({k-j-h})}\label{eq:last_one}
 \end{align}
-A lot of boring computations have been done, in order to fix the ideas and clarify the steps, let us summarizing what we have done keeping in mind that our main focus was to obtain a POP starting from the problem in \Cref{eq:original_Delta_prob} (\textit{don't loose ourself!}):
+\subsubsection{Summing up... (\textit{Don't loose ourself!})}
+A lot of boring computations have been done, in order to fix the ideas and clarify the steps, let us summarizing what we have done keeping in mind that our main focus was to obtain a POP starting from the problem in \Cref{eq:original_Delta_prob}:
 \begin{enumerate}
     \item A generic complex number can be described by \Cref{eq:complex}, and its norm  is given by \Cref{eq:norm}, this leads to the definition of the slack variables $a,b,t$ for real and imaginary part and for the magnitude of $\Delta(e^{i\omega})$;
     \item The description of $\Delta$ has been provided in \Cref{eq:delta_q} in function of its parameters ($\gamma,\delta$), exploiting the relationship $q\to{z}$, and evaluating it in $e^{i\omega}$ we have obtained the \Cref{eq:dgab} which relates $a,b,\gamma,\delta$. In order to complete this first block of transformation, equations \cref{eq:real} and \cref{eq:img} have been obtained; 
@@ -464,7 +465,7 @@ We are ready! Overall, the optimization problem is recast to:
     \end{aligned}
 \end{equation}
 
-By solving this problem by using convex SDP relaxation a bound on the true $\vert\Delta(e^{i\omega})\vert$ can be found. Theoretically since at the end we have to find an $\mathcal{H}_\infty$-norm, the problem (\ref{eq:final_problem}) must be solved for all $\omega\in[0,2\pi]$. Alternatively, to simplify an already complicated problem, we can introduce a Lipshitz continuity assumption on $\vert \Delta(e^{i\omega})\vert$, assuming that it does not increase or decay faster than a certain $L_b=100$dB/dec or $L_b=200$dB/dec. Finally, after having computed the bound on a certain number of frequencies, you take the max, such a value gives you an estimate of the searched quantity $\Vert \Delta(z) \Vert_\infty$. For more details you can refer to the paper \cite{abuabiah2023non}.\\
+By solving this problem by using convex SDP relaxation a bound on the true $\vert\Delta(e^{i\omega})\vert$ can be found. Theoretically since at the end we have to find an $\mathcal{H}_\infty$-norm, the problem (\ref{eq:final_problem}) must be solved for all $\omega\in[0,2\pi]$. Alternatively, to simplify an already complicated problem, we can introduce a Lipshitz continuity assumption on $\vert \Delta(e^{i\omega})\vert$, assuming that it does not increase or decay faster than a certain $L_b=100$dB/dec or $L_b=200$dB/dec. Finally, after having computed the bound on a certain number of frequencies, you take the max, such a value gives you an estimate of the searched quantity $\Vert \Delta(z) \Vert_\infty$. For more details you can refer to the paper \cite{abuabiah2023non}, in which you can find these results and others in the MIMO case.\\
 
 \noindent
 To conclude this discussion, \textit{What if the Condition 3 of the \Cref{th:stab} is not satisfied?} A possible way to solve this problem is to collect a larger amount of experimental data so that the size of the FCPS is reduced. In this way the distance between the central estimate and the ideal controller becomes smaller, and in turn, $\Vert \Delta \Vert_\infty$ decreases.
