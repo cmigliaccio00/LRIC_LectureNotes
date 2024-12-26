@@ -118,10 +118,14 @@ that is an \textbf{Input-Error} Set-Membership identification problem where the 
     Note that from the development of the theory the following three conditions are equivalent:
     \begin{itemize}
         \itemsep-0.3em
-        \item $E(q^{-1})=0$
-        \item $\epsilon(\rho,q^{-1})=0$
+        \item $E(q^{-1})=0 \quad \forall r(t)$
+        \item $\epsilon(\rho,q^{-1})=0 \quad \forall r(t)$
         \item $K(\rho,q^{-1})r(k)=M (1-M)^{-1} r(k)$
     \end{itemize}
+\end{remark}
+
+\begin{remark}
+    The first two conditions must be satisfied \textbf{for any possible signal $r(t)$}. To this aim we have to select a signal $r(t)$ to excite the plant that is as close as possible to a \textit{White Gaussian Noise (WGN)}, indeed such a signal applied to the plant $G$ is able to excite the system dynamics as well as any other signal!
 \end{remark}
 
 \section{Set-Membership approach to DDDC (SM-DDDC)}

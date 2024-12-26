@@ -62,6 +62,86 @@
       \field{pages}{121671\bibrangedash 121687}
       \range{pages}{17}
     \endentry
+    \entry{campestrini2016unbiased}{article}{}
+      \name{author}{4}{}{%
+        {{hash=f237d20481545e81c73f7cfcc5898e60}{%
+           family={Campestrini},
+           familyi={C\bibinitperiod},
+           given={Lucíola},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2b69ce1980f24bfa83791e562464de80}{%
+           family={Eckhard},
+           familyi={E\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d02ee34801aaece100a1c1e38637414c}{%
+           family={Chía},
+           familyi={C\bibinitperiod},
+           given={Lydia\bibnamedelima Andrea},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=0674c58018b7026afe5b310aceee34fa}{%
+           family={Boeira},
+           familyi={B\bibinitperiod},
+           given={Emerson},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{42d0df9f10be52a2b926e94b169c42d0}
+      \strng{fullhash}{81d3597ea6374e56148ad1a3a165382f}
+      \strng{bibnamehash}{42d0df9f10be52a2b926e94b169c42d0}
+      \strng{authorbibnamehash}{42d0df9f10be52a2b926e94b169c42d0}
+      \strng{authornamehash}{42d0df9f10be52a2b926e94b169c42d0}
+      \strng{authorfullhash}{81d3597ea6374e56148ad1a3a165382f}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Process Control}
+      \field{title}{Unbiased MIMO VRFT with application to process control}
+      \field{volume}{39}
+      \field{year}{2016}
+      \field{pages}{35\bibrangedash 49}
+      \range{pages}{15}
+    \endentry
+    \entry{cerone2020h}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c7606627b21e5e52b28fe963884773e4}{%
+           family={Abuabiah},
+           familyi={A\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{10c708a61ce3662620c4444181317ad8}
+      \strng{fullhash}{10c708a61ce3662620c4444181317ad8}
+      \strng{bibnamehash}{10c708a61ce3662620c4444181317ad8}
+      \strng{authorbibnamehash}{10c708a61ce3662620c4444181317ad8}
+      \strng{authornamehash}{10c708a61ce3662620c4444181317ad8}
+      \strng{authorfullhash}{10c708a61ce3662620c4444181317ad8}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 59th IEEE Conference on Decision and Control (CDC)}
+      \field{title}{An $H_\infty$ method to design the reference model in direct data-driven control design}
+      \field{year}{2020}
+      \field{pages}{6004\bibrangedash 6009}
+      \range{pages}{6}
+    \endentry
     \entry{cerone2012bounded}{article}{}
       \name{author}{3}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -629,6 +709,47 @@
       \field{labeltitlesource}{title}
       \field{title}{Identification of Wiener systems with hard and discontinuous nonlinearities}
       \field{year}{2003}
+    \endentry
+    \entry{da2018choice}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d3b8440a78791c8e59439b5bf4d89e3c}{%
+           family={Silva},
+           familyi={S\bibinitperiod},
+           given={Gustavo\bibnamedelimb R\bibnamedelima Gonçalves},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim G\bibinitperiod},
+           prefix={da},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=9cc86b0e5a6002c5090ccec53e987edb}{%
+           family={Bazanella},
+           familyi={B\bibinitperiod},
+           given={Alexandre\bibnamedelima Sanfelici},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=f237d20481545e81c73f7cfcc5898e60}{%
+           family={Campestrini},
+           familyi={C\bibinitperiod},
+           given={Lucíola},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{842d00621daae24bdadda5be09fa06a4}
+      \strng{fullhash}{842d00621daae24bdadda5be09fa06a4}
+      \strng{bibnamehash}{842d00621daae24bdadda5be09fa06a4}
+      \strng{authorbibnamehash}{842d00621daae24bdadda5be09fa06a4}
+      \strng{authornamehash}{842d00621daae24bdadda5be09fa06a4}
+      \strng{authorfullhash}{842d00621daae24bdadda5be09fa06a4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Control Systems Technology}
+      \field{number}{5}
+      \field{title}{On the choice of an appropriate reference model for control of multivariable plants}
+      \field{volume}{27}
+      \field{year}{2018}
+      \field{pages}{1937\bibrangedash 1949}
+      \range{pages}{13}
     \endentry
     \entry{van2011data}{article}{}
       \name{author}{3}{}{%
