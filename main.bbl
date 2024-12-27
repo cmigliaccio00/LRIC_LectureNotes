@@ -495,6 +495,44 @@
       \field{pages}{1775\bibrangedash 1781}
       \range{pages}{7}
     \endentry
+    \entry{cerone2017_NMP}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
+           family={Cerone},
+           familyi={C\bibinitperiod},
+           given={Vito},
+           giveni={V\bibinitperiod}}}%
+        {{hash=85999b3e564e19ea5216ff756fc7bb67}{%
+           family={Regruto},
+           familyi={R\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=756756af258175998de76a02d67fe8ec}{%
+           family={Abuabiah},
+           familyi={A\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{fullhash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{bibnamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authorbibnamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authornamehash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \strng{authorfullhash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 IEEE 56th Annual Conference on Decision and Control (CDC)}
+      \field{title}{A set-membership approach to direct data-driven control design for SISO non-minimum phase plants}
+      \field{year}{2017}
+      \field{pages}{1284\bibrangedash 1290}
+      \range{pages}{7}
+    \endentry
     \entry{cerone2017direct}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=b48c5ce6654741b71d7ac88fda4fdd5d}{%
@@ -522,6 +560,7 @@
       \strng{authorbibnamehash}{ddb27f47165e2c6e34dffa6e85c26519}
       \strng{authornamehash}{ddb27f47165e2c6e34dffa6e85c26519}
       \strng{authorfullhash}{ddb27f47165e2c6e34dffa6e85c26519}
+      \field{extraname}{2}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
