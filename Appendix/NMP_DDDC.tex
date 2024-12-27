@@ -1,11 +1,13 @@
-\chapter[DDDC with NMP plant dynamics]{Direct-Data Driven Control in presence of Non-Minimum Phase plant dynamics}
+\chapter[DDDC with NMP plant dynamics]{Direct-Data Driven Control in presence of Non-Minimum Phase plant dynamics\footnote{
+    This topic is not included in the course topics. It is an additional chapter, to extend the subject of Direct Data-Driven control. 
+}}
 
 Designing a controller for a \textbf{non-minimum phase system} is challenging since, no matter what is the used approach for designing it, there will be very commonly \underline{unstable zero-pole cancellations}.\\
 Moreover, in the framework of Set-Membership DDDC, the plant is unknown and no estimate of the NMP zeros is done. The approach proposed in \citeauthor{cerone2017_NMP} \cite{cerone2017_NMP} deals with a \textbf{two-stage systematic procedure} in order to detect and manage the presence of non-minimum phase dynamics in the plant to be controlled. 
 
 \section{Two stage procedure for DDDC of NMP plant}
 Before starting, it is crucial to give the definition of \textbf{prospective plant $G^*$}:
-\begin{definition}[\textbf{PROSPECTIVE PLANT}]
+\begin{definition}[\textbf{Prospective plant}]
     Given a reference model with transfer function $M$ and a designed controller with transfer function $K$, the \textit{prospective plant} $G^*$  is defined as 
     \begin{equation}
         G^*=\frac{M}{K(1-M)}
@@ -36,3 +38,8 @@ All the unstable poles of the designed controller $K(\rho)$ close to the NMP zer
     \includegraphics[scale=1]{img/NMP_1.png}
     \caption{Comparison of step responses: designed feedback control system (2 step-procedure) (solid), the original reference model(dashed), modified reference model (dashed-dotted)}
 \end{figure}
+
+\section*{References}
+\begin{itemize}
+    \item[\Large{\ding{45}}]  \Citeauthor{cerone2017_NMP}, \textit{\citetitle{cerone2017_NMP}}, \citedate{cerone2017_NMP}
+\end{itemize}
